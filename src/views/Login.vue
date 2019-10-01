@@ -48,20 +48,15 @@
 <script>
 export default {
   name: 'Login',
-  data () {
-    return {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      isLogin: true,
-      formRules: {
-        
-      }
-    }
-  },
+  data: () => ({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    isLogin: true,
+    formRules: {}
+  }),
   methods: {
-    submit() {
-
+    submit () {
     }
   }
 }
