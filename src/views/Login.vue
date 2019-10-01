@@ -1,9 +1,9 @@
 <template>
   <div class="login-view">
     <h1>Idealix</h1>
-    <div v-show='isLogin' class="login-view__form-content">
-      <h1>Login</h1>
 
+    <div v-if='isLogin' class="login-view__form-content">
+      <h1>Login</h1>
       <v-form v-model="valid">
         <v-text-field
           v-model="email"
@@ -17,30 +17,30 @@
           required />
       </v-form>
       <v-btn @click="submitLogin">Entrar</v-btn>
-      <div @click="isLogin = !isLogin">Criar conta</div>
+      <div @click="isLogin = !isLogin">Não possui uma conta? Clique aqui e Registre-se</div>
     </div>
-    <div v-show='!isLogin' class="login-view__form-content">
-      <h1>Registro</h1>
 
+    <div v-if='!isLogin' class="login-view__form-content">
+      <h1>Registro</h1>
       <v-form v-model="valid">
+          <v-text-field
+            v-model="name"
+            :rules="formRules"
+            label="Nome"
+            required />
           <v-text-field
             v-model="email"
             :rules="formRules"
-            label="E-mail"
+            label="E-Mail"
             required />
           <v-text-field
             v-model="password"
             :rules="formRules"
             label="Senha"
             required />
-          <v-text-field
-            v-model="confirmPassword"
-            :rules="formRules"
-            label="Confirmação de Senha"
-            required />
       </v-form>
       <v-btn @click="submit">Registrar</v-btn>
-      <div @click="isLogin = !isLogin">Login</div>
+      <div @click="isLogin = !isLogin">Já possui uma conta? Clique aqui e faça Login</div>
     </div>
   </div>
 </template>
@@ -49,9 +49,9 @@
 export default {
   name: 'Login',
   data: () => ({
+    name: '',
     email: '',
     password: '',
-    confirmPassword: '',
     isLogin: true,
     formRules: {}
   }),
