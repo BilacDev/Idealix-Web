@@ -4,7 +4,7 @@
 
     <div v-if='isLogin' class="login-view__form-content">
       <h1>Login</h1>
-      <v-form v-model="valid">
+      <!-- <v-form v-model="valid">
         <v-text-field
           v-model="email"
           :rules="formRules"
@@ -16,13 +16,13 @@
           label="Senha"
           required />
       </v-form>
-      <v-btn @click="submitLogin">Entrar</v-btn>
+      <v-btn @click="submitLogin">Entrar</v-btn> -->
       <div @click="isLogin = !isLogin">Não possui uma conta? Clique aqui e Registre-se</div>
     </div>
 
     <div v-if='!isLogin' class="login-view__form-content">
       <h1>Registro</h1>
-      <v-form v-model="valid">
+      <!-- <v-form v-model="valid">
           <v-text-field
             v-model="name"
             :rules="formRules"
@@ -39,7 +39,7 @@
             label="Senha"
             required />
       </v-form>
-      <v-btn @click="submit">Registrar</v-btn>
+      <v-btn @click="submit">Registrar</v-btn> -->
       <div @click="isLogin = !isLogin">Já possui uma conta? Clique aqui e faça Login</div>
     </div>
   </div>

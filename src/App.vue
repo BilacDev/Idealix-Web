@@ -1,7 +1,7 @@
 <template>
-  <v-app id="App">
+  <div id="App">
     <router-view />
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -25,6 +25,6 @@ export default {
   display: flex;
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(to right, #ad7791, #87a4ad);
+  background: linear-gradient(to right, #e994bd, #94bddf);
 }
 </style>
