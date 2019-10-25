@@ -1,46 +1,43 @@
 <template>
   <div class="login-view">
-    <h1>Idealix</h1>
+    <h1>IDEALIX</h1>
+    <div class="login-view__form-content">
+      <md-tabs md-alignment="fixed">
+        <md-tab id="tab-home" md-label="Login">
 
-    <div v-if='isLogin' class="login-view__form-content">
-      <h1>Login</h1>
-      <!-- <v-form v-model="valid">
-        <v-text-field
-          v-model="email"
-          :rules="formRules"
-          label="E-mail"
-          required />
-        <v-text-field
-          v-model="password"
-          :rules="formRules"
-          label="Senha"
-          required />
-      </v-form>
-      <v-btn @click="submitLogin">Entrar</v-btn> -->
-      <div @click="isLogin = !isLogin">Não possui uma conta? Clique aqui e Registre-se</div>
-    </div>
+          <form novalidate class="md-layout" @submit.prevent="validateUser">
+            <md-field>
+              <label for="email">Email</label>
+              <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
+            </md-field>
+            <md-field>
+              <label for="password">Password</label>
+              <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
+            </md-field>
+            <md-button class="md-raised md-primary">Primary</md-button>
+          </form>
 
-    <div v-if='!isLogin' class="login-view__form-content">
-      <h1>Registro</h1>
-      <!-- <v-form v-model="valid">
-          <v-text-field
-            v-model="name"
-            :rules="formRules"
-            label="Nome"
-            required />
-          <v-text-field
-            v-model="email"
-            :rules="formRules"
-            label="E-Mail"
-            required />
-          <v-text-field
-            v-model="password"
-            :rules="formRules"
-            label="Senha"
-            required />
-      </v-form>
-      <v-btn @click="submit">Registrar</v-btn> -->
-      <div @click="isLogin = !isLogin">Já possui uma conta? Clique aqui e faça Login</div>
+        </md-tab>
+        <md-tab id="tab-pages" md-label="Register">
+
+          <form novalidate class="md-layout" @submit.prevent="validateUser">
+            <md-field>
+              <label for="first-name">Name</label>
+              <md-input name="name" id="name" autocomplete="name" v-model="name" :disabled="sending" />
+            </md-field>
+            <md-field>
+              <label for="email">Email</label>
+              <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
+            </md-field>
+            <md-field>
+              <label for="password">Password</label>
+              <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
+            </md-field>
+            <md-button class="md-raised md-primary">Primary</md-button>
+          </form>
+
+        </md-tab>
+      </md-tabs>
     </div>
   </div>
 </template>
@@ -71,8 +68,11 @@ export default {
   width: 100vw;
   height: 100vh;
   &__form-content {
-    display: flex;
-    flex-direction: column;
+    // box-shadow: 0px 0px 8px 0px rgba(#000000, 0.64);
+    width: 480px;
+    border-radius: 4px;
+    padding: 32px;
+    background: rgba(255, 255, 255, 1);
   }
 }
 </style>
