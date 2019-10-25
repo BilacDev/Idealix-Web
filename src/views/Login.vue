@@ -5,42 +5,47 @@
     </div>
 
     <div class="login-view__form-content">
-      <md-tabs md-alignment="fixed">
-        <md-tab id="tab-home" md-label="Login">
+      <div class="login-view__form-card">
 
-          <form novalidate class="md-layout" @submit.prevent="validateUser">
-            <md-field>
-              <label for="email">Email</label>
-              <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
-            </md-field>
-            <md-field>
-              <label for="password">Password</label>
-              <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
-            </md-field>
-            <md-button class="md-raised md-primary">Primary</md-button>
-          </form>
+        <form v-if="isLogin" novalidate class="md-layout" @submit.prevent="validateUser">
+          <h1>Login</h1>
+          <md-field>
+            <label for="email">Email</label>
+            <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
+          </md-field>
+          <md-field>
+            <label for="password">Password</label>
+            <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
+          </md-field>
+          <div class="submits">
+            <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
+            <md-button class="md-raised md-primary">Entrar</md-button>
+          </div>
+          <span>Não possui uma conta? <a @click="isLogin = !isLogin">Cadastre-se agora mesmo</a></span>
+        </form>
 
-        </md-tab>
-        <md-tab id="tab-pages" md-label="Register">
+        <form v-else novalidate class="md-layout" @submit.prevent="validateUser">
+          <h1>Cadastre-se</h1>
+          <md-field>
+            <label for="first-name">Name</label>
+            <md-input name="name" id="name" autocomplete="name" v-model="name" :disabled="sending" />
+          </md-field>
+          <md-field>
+            <label for="email">Email</label>
+            <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
+          </md-field>
+          <md-field>
+            <label for="password">Password</label>
+            <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
+          </md-field>
+          <div class="submits">
+            <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
+            <md-button class="md-raised md-primary">Cadastrar</md-button>
+          </div>
+          <span>Ja possui uma conta? <a @click="isLogin = !isLogin">Clique aqui para acessar</a></span>
+        </form>
 
-          <form novalidate class="md-layout" @submit.prevent="validateUser">
-            <md-field>
-              <label for="first-name">Name</label>
-              <md-input name="name" id="name" autocomplete="name" v-model="name" :disabled="sending" />
-            </md-field>
-            <md-field>
-              <label for="email">Email</label>
-              <md-input type="email" name="email" id="email" autocomplete="email" v-model="email" :disabled="sending" />
-            </md-field>
-            <md-field>
-              <label for="password">Password</label>
-              <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
-            </md-field>
-            <md-button class="md-raised md-primary">Primary</md-button>
-          </form>
-
-        </md-tab>
-      </md-tabs>
+      </div>
     </div>
   </div>
 </template>
@@ -52,6 +57,7 @@ export default {
     name: '',
     email: '',
     password: '',
+    remember: false,
     isLogin: true,
     formRules: {}
   }),
@@ -86,9 +92,36 @@ export default {
   &__form-content {
     // box-shadow: 0px 0px 8px 0px rgba(#000000, 0.64);
     width: 50%;
-    border-radius: 4px;
-    padding: 32px;
-    background: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__form-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 400px;
+    h1 {
+      margin-bottom: 40px;
+    }
+    .submits {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    span {
+      width: 100%;
+      text-align: center;
+      margin-top: 60px;
+      a {
+        cursor: pointer;
+        text-decoration: none !important;
+      }
+    }
+  }
+  .md-button {
+    margin: 0;
   }
 }
 </style>
