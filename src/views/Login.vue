@@ -1,6 +1,9 @@
 <template>
   <div class="login-view">
-    <h1>IDEALIX</h1>
+    <div class="login-view__logo-content">
+      <h1>iDealix</h1>
+    </div>
+
     <div class="login-view__form-content">
       <md-tabs md-alignment="fixed">
         <md-tab id="tab-home" md-label="Login">
@@ -64,12 +67,25 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
+  &__logo-content {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    background: linear-gradient(to right bottom, #78475f, #4e7495);
+    h1 {
+      color: white;
+      font-weight: 400;
+      letter-spacing: 1px;
+      font-size: 30px;
+      line-height: 30px;
+      margin: 20px;
+    }
+  }
   &__form-content {
     // box-shadow: 0px 0px 8px 0px rgba(#000000, 0.64);
-    width: 480px;
+    width: 50%;
     border-radius: 4px;
     padding: 32px;
     background: rgba(255, 255, 255, 1);
