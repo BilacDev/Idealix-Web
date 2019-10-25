@@ -38,7 +38,7 @@
             <md-input type="password" name="password" id="password" v-model="password" :disabled="sending" />
           </md-field>
           <div class="submits">
-            <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
+            <md-checkbox v-model="remember" class=" md-raised md-primary">Li e aceito os <a>Termos de Uso</a></md-checkbox>
             <md-button class="md-raised md-primary">Cadastrar</md-button>
           </div>
           <span>Ja possui uma conta? <a @click="isLogin = !isLogin">Clique aqui para acessar</a></span>
@@ -109,10 +109,6 @@ export default {
       width: 100%;
       text-align: center;
       margin-top: 60px;
-      a {
-        cursor: pointer;
-        text-decoration: none !important;
-      }
     }
   }
   .md-button {
