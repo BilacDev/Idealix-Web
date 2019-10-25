@@ -77,7 +77,7 @@ export default {
   &__logo-content {
     height: 100%;
     width: 50%;
-    background: linear-gradient(to right bottom, #78475f, #4e7495);
+    background: linear-gradient(to right bottom, #591ea3, #7f169f);
     h1 {
       color: white;
       font-weight: 400;

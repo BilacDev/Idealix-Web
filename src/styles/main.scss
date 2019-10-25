@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
 @import 'colors.scss';
 
+@import "~vue-material/dist/theme/engine";
+
+@include md-register-theme("default", (
+  primary: $--primary-color,
+  accent: $--secondary-color,
+  background: $--background,
+));
+
+@import "~vue-material/dist/theme/all";
+
 #App {
   font-family: 'Montserrat', sans-serif;
   font-size: 14px;
