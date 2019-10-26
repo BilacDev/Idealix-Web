@@ -1,6 +1,8 @@
 <template>
   <div id="App">
-    <router-view />
+    <transition name="fade">
+      <router-view />
+    </transition>
   </div>
 </template>
 
@@ -11,5 +13,16 @@ export default {
 </script>
 
 <style lang="scss">
-#App {}
+.fade-enter-active, .fade-leave-active {
+transition: opacity .3s;
+}
+.fade-enter-active {
+display: none;
+}
+.fade-enter, .fade-leave-to {
+opacity: 0;
+}
+.md-button {
+  margin: 0;
+}
 </style>
