@@ -1,21 +1,20 @@
 <template>
   <div class="about">
-    <hello-world />
-    <h1>This is an about page</h1>
+    <user-menu />
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld'
+import UserMenu from '@/components/UserMenu'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    UserMenu
   }
 }
 </script>
 
-<script lang="scss">
+<style lang="scss">
 
-</script>
+</style>
