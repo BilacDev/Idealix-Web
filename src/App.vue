@@ -22,7 +22,4 @@ display: none;
 .fade-enter, .fade-leave-to {
 opacity: 0;
 }
-.md-button {
-  margin: 0;
-}
 </style>
