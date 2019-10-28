@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <md-avatar class="md-avatar-icon md-primary">
-      <!-- <img src="/assets/examples/avatar.png" alt="Avatar"> -->
-      {{ name }}
-    </md-avatar>
+  <div class="header-component">
+    <h1>iDealix</h1>
+    <div class="">
+      <md-avatar class="md-avatar-icon md-primary">
+        <!-- <img src="/assets/examples/avatar.png" alt="Avatar"> -->
+        {{ name }}
+      </md-avatar>
+    </div>
   </div>
 </template>
 
@@ -17,5 +20,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/colors.scss';
 
+.header-component {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px;
+  h1 {
+    margin: 0;
+    font-weight: 400;
+  }
+}
 </style>
