@@ -7,8 +7,8 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import(/* webpackChunkName: "Home" */ './views/Home.vue')
+      name: 'dashboard',
+      component: () => import(/* webpackChunkName: "Dashboard" */ './views/Dashboard.vue')
     },
     {
       path: '/login',

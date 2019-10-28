@@ -26,7 +26,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 30px;
+  padding: 30px;
   h1 {
     margin: 0;
     font-weight: 400;
