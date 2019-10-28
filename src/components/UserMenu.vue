@@ -6,6 +6,7 @@
         <!-- <img src="/assets/examples/avatar.png" alt="Avatar"> -->
         {{ name }}
       </md-avatar>
+      <span>{{ fullName }}</span>
     </div>
   </div>
 </template>
@@ -14,7 +15,8 @@
 export default {
   name: 'UserMenu',
   data: () => ({
-    name: 'GR'
+    name: 'GR',
+    fullName: 'Guilherme Rios'
   })
 }
 </script>
