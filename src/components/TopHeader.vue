@@ -1,19 +1,16 @@
 <template>
   <div class="header-component">
-    <h1>iDealix</h1>
-    <div class="">
-      <md-avatar class="md-avatar-icon md-primary">
-        <!-- <img src="/assets/examples/avatar.png" alt="Avatar"> -->
-        {{ name }}
-      </md-avatar>
-      <span>{{ fullName }}</span>
-    </div>
+    <md-avatar class="md-avatar-icon md-primary">
+      <!-- <img src="/assets/examples/avatar.png" alt="Avatar"> -->
+      {{ name }}
+    </md-avatar>
+    <span>{{ fullName }}</span>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'UserMenu',
+  name: 'TopHeader',
   data: () => ({
     name: 'GR',
     fullName: 'Guilherme Rios'

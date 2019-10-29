@@ -90,6 +90,7 @@ export default {
   &__logo {
     width: 50%;
     height: 100%;
+    box-shadow: 0 0 20px 0 $--black;
     background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
     h1 {
       margin: 30px;

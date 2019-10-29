@@ -1,16 +1,17 @@
 <template>
-  <div class="about">
-    <user-menu />
+  <div class="dashboard-view">
+    <side-menu />
+
     <md-speed-dial class="md-bottom-right">
       <md-speed-dial-target>
-        <md-icon>add</md-icon>
+        <md-icon>Add</md-icon>
       </md-speed-dial-target>
       <md-speed-dial-content>
         <md-button class="md-icon-button">
-          <md-icon>note</md-icon>
+          <md-icon>Kid</md-icon>
         </md-button>
         <md-button class="md-icon-button">
-          <md-icon>event</md-icon>
+          <md-icon>His</md-icon>
         </md-button>
       </md-speed-dial-content>
     </md-speed-dial>
@@ -18,17 +19,18 @@
 </template>
 
 <script>
-import UserMenu from '@/components/UserMenu'
+import SideMenu from '@/components/SideMenu'
 
 export default {
   name: 'Dashboard',
-  components: {
-    UserMenu
-  },
+  components: { SideMenu }
 }
 </script>
 
 <style lang="scss">
-
-
+.dashboard-view {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
 </style>
