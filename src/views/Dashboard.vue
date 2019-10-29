@@ -4,14 +4,16 @@
 
     <md-speed-dial class="md-bottom-right">
       <md-speed-dial-target>
-        <md-icon>Add</md-icon>
+        <md-icon>add</md-icon>
       </md-speed-dial-target>
       <md-speed-dial-content>
         <md-button class="md-icon-button">
-          <md-icon>Kid</md-icon>
+          <md-icon>face</md-icon>
+          <md-tooltip md-direction="left">Inserir Nova Criança</md-tooltip>
         </md-button>
         <md-button class="md-icon-button">
-          <md-icon>His</md-icon>
+          <md-icon>timeline</md-icon>
+          <md-tooltip md-direction="left">Adicionar Medição</md-tooltip>
         </md-button>
       </md-speed-dial-content>
     </md-speed-dial>
