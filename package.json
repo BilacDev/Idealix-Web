@@ -10,10 +10,11 @@
   "dependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "vue-chartjs": "^3.4.2",
-    "vue-material": "^1.0.0-beta-11",
+    "vuex": "^3.0.1",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vue-material": "^1.0.0-beta-11",
+    "vue-chartjs": "^3.4.2",
+    "chart.js": "^2.9.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.8.0",
