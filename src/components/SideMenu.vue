@@ -1,19 +1,65 @@
 <template>
   <div class="sidemenu-component">
     <h1>iDealix</h1>
-    <profile-menu />
+    <md-list>
+      <md-list-item @click="alert = !alert">
+        <md-icon>face</md-icon>
+        <span class="md-list-item-text">Adicionar Criança</span>
+      </md-list-item>
+
+      <md-list-item @click="alert = !alert">
+        <md-icon>timeline</md-icon>
+        <span class="md-list-item-text">Adicionar Marco</span>
+      </md-list-item>
+
+      <md-divider ></md-divider>
+      <md-subheader>Criançada</md-subheader>
+
+      <md-list-item>
+        <md-avatar>
+          <img src="https://placeimg.com/40/40/people/5" alt="People">
+        </md-avatar>
+
+        <span class="md-list-item-text">Abbey Christansen</span>
+
+        <md-button class="md-icon-button md-list-action">
+          <md-icon class="md-primary">chat_bubble</md-icon>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-avatar>
+          <img src="https://placeimg.com/40/40/people/1" alt="People">
+        </md-avatar>
+
+        <span class="md-list-item-text">Alex Nelson</span>
+
+        <md-button class="md-icon-button md-list-action">
+          <md-icon class="md-primary">chat_bubble</md-icon>
+        </md-button>
+      </md-list-item>
+
+      <md-list-item>
+        <md-avatar>
+          <img src="https://placeimg.com/40/40/people/6" alt="People">
+        </md-avatar>
+
+        <span class="md-list-item-text">Mary Johnson</span>
+
+        <md-button class="md-icon-button md-list-action">
+          <md-icon>chat_bubble</md-icon>
+        </md-button>
+      </md-list-item>
+    </md-list>
+
   </div>
 </template>
 
 <script>
-import ProfileMenu from './ProfileMenu'
 export default {
   name: 'SideMenu',
-  components: {
-    ProfileMenu
-  },
   data: () => {
-
+    alert: false
   }
 }
 </script>
@@ -22,14 +68,22 @@ export default {
 @import '../styles/colors.scss';
 
 .sidemenu-component {
-    width: 300px;
-    height: 100vh;
-    background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
-    box-shadow: 0 0 20px 0 $--black;
-    h1 {
-      margin: 30px;
-      color: white;
-      font-weight: 400;
-    }
+  width: 300px;
+  height: 100vh;
+  background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
+  box-shadow: 0 0 20px 0 $--black;
+  h1 {
+    margin: 30px;
+    color: $--white;
+    font-weight: 400;
   }
+  &__menu-option {
+
+  }
+}
+
+.md-list {
+  background-color: transparent !important;
+}
+
 </style>
