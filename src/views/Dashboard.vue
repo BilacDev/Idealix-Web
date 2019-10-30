@@ -25,7 +25,7 @@ import SideMenu from '@/components/SideMenu'
 
 export default {
   name: 'Dashboard',
-  components: { SideMenu },
+  components: { SideMenu }
 }
 </script>
 

@@ -1,13 +1,17 @@
 <template>
   <div class="sidemenu-component">
     <h1>iDealix</h1>
-
+    <profile-menu />
   </div>
 </template>
 
 <script>
+import ProfileMenu from './ProfileMenu'
 export default {
   name: 'SideMenu',
+  components: {
+    ProfileMenu
+  },
   data: () => {
 
   }
@@ -18,7 +22,7 @@ export default {
 @import '../styles/colors.scss';
 
 .sidemenu-component {
-    width: 400px;
+    width: 300px;
     height: 100vh;
     background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
     box-shadow: 0 0 20px 0 $--black;
