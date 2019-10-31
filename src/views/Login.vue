@@ -95,7 +95,7 @@ export default {
     box-shadow: 0 0 20px 0 $--black;
     background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
     h1 {
-      margin: 30px;
+      margin: 30px 16px;
       color: white;
       font-weight: 400;
     }
