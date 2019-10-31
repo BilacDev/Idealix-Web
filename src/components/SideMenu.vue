@@ -22,9 +22,6 @@
 
         <span class="md-list-item-text">Abbey Christansen</span>
 
-        <md-button class="md-icon-button md-list-action">
-          <md-icon class="md-primary">chat_bubble</md-icon>
-        </md-button>
       </md-list-item>
 
       <md-list-item>
@@ -34,9 +31,6 @@
 
         <span class="md-list-item-text">Alex Nelson</span>
 
-        <md-button class="md-icon-button md-list-action">
-          <md-icon class="md-primary">chat_bubble</md-icon>
-        </md-button>
       </md-list-item>
 
       <md-list-item>
@@ -46,9 +40,6 @@
 
         <span class="md-list-item-text">Mary Johnson</span>
 
-        <md-button class="md-icon-button md-list-action">
-          <md-icon>chat_bubble</md-icon>
-        </md-button>
       </md-list-item>
     </md-list>
 
