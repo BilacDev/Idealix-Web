@@ -61,12 +61,12 @@
 
 <script>
 import SideMenu from '@/components/SideMenu'
-import ModalActions from '@/components/ModalActions'
-
 
 export default {
   name: 'Dashboard',
-  components: { SideMenu, ModalActions },
+  components: {
+    SideMenu
+  },
   data: () => ({
     addKidDialogVisibel: false,
     addPointDialogVisibel: false,
