@@ -3,19 +3,17 @@
     <h1>iDealix</h1>
     <md-list class="sidemenu-component__menu-items">
       <md-subheader>Opções</md-subheader>
-      <md-list-item @click="alert = !alert">
+      <md-list-item @click="$emit('addKidDialogVisable')">
         <md-icon>face</md-icon>
         <span class="md-list-item-text">Adicionar Criança</span>
       </md-list-item>
-      <md-list-item @click="alert = !alert">
+      <md-list-item @click="$emit('addPointDialogVisable')">
         <md-icon>timeline</md-icon>
-        <span class="md-list-item-text">Adicionar Marco</span>
+        <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kids" v-key="kid.id" @click="alert = !alert">
-        <md-avatar>
-          <img :src="kid.picture" alt="People">
-        </md-avatar>
+      <md-list-item v-for="kid in kids" v-key="kid.id" @click="">
+        <user-avatar :name="kid.name" :picture="kid.picture" />
         <span class="md-list-item-text">{{ kid.name }}</span>
       </md-list-item>
     </md-list>
@@ -23,10 +21,14 @@
 </template>
 
 <script>
+import UserAvatar from '@/components/UserAvatar'
+
 export default {
   name: 'SideMenu',
+  components: {
+    UserAvatar
+  },
   data: () => ({
-    alert: false,
     kids: [
       {
         id: 1,
@@ -36,7 +38,7 @@ export default {
       {
         id: 2,
         name: 'Alex Nelson',
-        picture: 'https://placeimg.com/40/40/people/2'
+        // picture: 'https://placeimg.com/40/40/people/2'
       },
       {
         id: 3,
@@ -46,7 +48,7 @@ export default {
       {
         id: 3,
         name: 'Angela Saemi',
-        picture: 'https://placeimg.com/40/40/people/4'
+        // picture: 'https://placeimg.com/40/40/people/4'
       },
       {
         id: 3,
@@ -64,7 +66,7 @@ export default {
         picture: 'https://placeimg.com/40/40/people/7'
       }
     ]
-  })
+  }),
 }
 </script>
 
