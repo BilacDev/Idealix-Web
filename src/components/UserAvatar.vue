@@ -1,5 +1,5 @@
 <template>
-  <md-avatar class="useravatar-component">
+  <md-avatar class="useravatar-component" :class="size">
     <img v-if="picture" :src="picture" alt="People">
     <span v-else>{{ initials }}</span>
   </md-avatar>
@@ -10,7 +10,8 @@ export default {
   name: 'UserAvatar',
   props: {
     name: String,
-    picture: String
+    picture: String,
+    size: String
   },
   computed: {
     initials () {

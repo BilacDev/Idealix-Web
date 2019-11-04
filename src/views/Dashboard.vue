@@ -5,6 +5,8 @@
       @addPointDialogVisable="addPointDialogVisibel = true"
     />
 
+    <profile-header />
+
     <md-speed-dial class="md-bottom-right">
       <md-speed-dial-target>
         <md-icon>add</md-icon>
@@ -61,10 +63,12 @@
 
 <script>
 import SideMenu from '@/components/SideMenu'
+import ProfileHeader from '@/components/ProfileHeader'
 
 export default {
   name: 'Dashboard',
   components: {
+    ProfileHeader,
     SideMenu
   },
   data: () => ({
