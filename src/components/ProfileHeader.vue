@@ -1,6 +1,6 @@
 <template>
   <div class="profileheader-component">
-    <md-menu md-align-trigger md-direction="bottom-end">
+    <md-menu md-align-trigger md-direction="bottom-end" md-size="medium">
       <div class="profileheader-component__menu-button md-button"  md-menu-trigger>
         <user-avatar :name="name" :picture="picture" class="profileheader-component__avatar-icon" />
         <span class="profileheader-component__user-name">{{ name }}</span>
@@ -71,6 +71,9 @@ export default {
   }
   &__action-icon {
     text-align: left;
+    .md-list-item-content {
+      justify-content: flex-start;
+    }
     .md-icon {
       margin: 0px 10px 0px 0px !important;
       color: $--text-default !important;
