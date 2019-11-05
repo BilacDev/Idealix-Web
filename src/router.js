@@ -7,13 +7,24 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'dashboard',
-      component: () => import(/* webpackChunkName: "Dashboard" */ './views/Dashboard.vue')
+      redirect: 'dashboard',
+      component: () => import(/* webpackChunkName: "container" */ '@/views/Container.vue'),
+      children: [
+        {
+          path: '/dashboard',
+          name: 'dashboard',
+          component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard'),
+        }
+      ]
     },
     {
       path: '/login',
       name: 'login',
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue')
+      component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
