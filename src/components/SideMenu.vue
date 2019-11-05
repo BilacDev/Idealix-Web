@@ -32,7 +32,7 @@ export default {
     kids: [
       {
         id: 1,
-        name: 'Abbey Christansen',
+        name: 'Abbey Christansen Não sei das quantas',
         picture: 'https://placeimg.com/40/40/people/1'
       },
       {
@@ -108,7 +108,10 @@ export default {
   &-item-content * {
     color: $--white !important;
   }
-
+  &-item-text {
+    display: block;
+    text-overflow: ellipsis;
+  }
 }
 
 </style>
