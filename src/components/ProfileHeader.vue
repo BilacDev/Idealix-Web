@@ -1,8 +1,23 @@
 <template>
   <div class="profileheader-component">
-    <user-avatar :name="name" :picture="picture" class="profileheader-component__avatar-icon" />
-    <span class="profileheader-component__user-name">{{ name }}</span>
-    <md-icon>arrow_drop_down</md-icon>
+    <md-menu md-align-trigger md-direction="bottom-end">
+      <div class="profileheader-component__menu-button md-button"  md-menu-trigger>
+        <user-avatar :name="name" :picture="picture" class="profileheader-component__avatar-icon" />
+        <span class="profileheader-component__user-name">{{ name }}</span>
+        <md-icon>arrow_drop_down</md-icon>
+      </div>
+      <md-menu-content>
+        <md-menu-item class="profileheader-component__action-icon" @click="">
+            <md-icon>person</md-icon>
+            Perfil
+        </md-menu-item>
+        <md-divider/>
+        <md-menu-item class="profileheader-component__action-icon" @click="">
+          <md-icon>directions_run</md-icon>
+          Sair
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
   </div>
 </template>
 
@@ -29,20 +44,41 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/colors.scss';
 
 .profileheader-component {
-  // width: 100%;
-  height:40px;
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  flex-direction: row;
+  height:40px;
   margin: 20px 16px;
+  &__menu-button {
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: -8px;
+    padding: 8px;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
   &__user-name, .md-icon {
     font-size: 1.4em;
+    color: $--text-default !important;
+  }
+  &__action-icon {
+    text-align: left;
+    .md-icon {
+      margin: 0px 10px 0px 0px !important;
+      color: $--text-default !important;
+    }
   }
   .md-avatar {
     margin: 0;
-    margin-right: 10px;
+    margin-right: 15px;
   }
 }
 </style>

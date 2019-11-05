@@ -66,7 +66,7 @@ export default {
         picture: 'https://placeimg.com/40/40/people/7'
       }
     ]
-  }),
+  })
 }
 </script>
 
