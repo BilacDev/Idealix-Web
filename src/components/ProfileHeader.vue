@@ -1,5 +1,5 @@
 <template>
-  <div class="profileheader-component">
+  <header class="profileheader-component">
     <md-menu md-align-trigger md-direction="bottom-end" md-size="medium">
       <div class="profileheader-component__menu-button md-button"  md-menu-trigger>
         <user-avatar :name="name" :picture="picture" class="profileheader-component__avatar-icon" />
@@ -8,8 +8,8 @@
       </div>
       <md-menu-content>
         <md-menu-item class="profileheader-component__action-icon" @click="">
-            <md-icon>person</md-icon>
-            Perfil
+          <md-icon>person</md-icon>
+          Perfil
         </md-menu-item>
         <md-divider/>
         <md-menu-item class="profileheader-component__action-icon" @click="">
@@ -18,7 +18,7 @@
         </md-menu-item>
       </md-menu-content>
     </md-menu>
-  </div>
+  </header>
 </template>
 
 <script>
@@ -47,11 +47,10 @@ export default {
 @import '../styles/colors.scss';
 
 .profileheader-component {
-  flex: 1;
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  flex-direction: row;
+  width: calc(100% - 32px);
   height:40px;
   margin: 20px 16px;
   &__menu-button {

@@ -1,88 +1,39 @@
 <template>
-  <div class="dashboard-view">
-    <side-menu
-      @addKidDialogVisable="addKidDialogVisibel = true"
-      @addPointDialogVisable="addPointDialogVisibel = true"
-    />
+  <div class="infocards-component">
+    <div class="infocards-component__kid-info">
+      <user-avatar :name="name" :picture="picture" size="md-large" />
+    </div>
+    <div class="infocards-component__history-graphs">
 
-    <profile-header />
-
-    <md-speed-dial class="md-bottom-right">
-      <md-speed-dial-target>
-        <md-icon>add</md-icon>
-      </md-speed-dial-target>
-      <md-speed-dial-content>
-        <md-button class="md-icon-button" @click="addKidDialogVisibel = true">
-          <md-icon>face</md-icon>
-          <md-tooltip md-direction="left">Adicionar Criança</md-tooltip>
-        </md-button>
-        <md-button class="md-icon-button" @click="addPointDialogVisibel = true">
-          <md-icon>timeline</md-icon>
-          <md-tooltip md-direction="left">Inserir Marco</md-tooltip>
-        </md-button>
-      </md-speed-dial-content>
-    </md-speed-dial>
-
-    <md-dialog :md-active.sync="addKidDialogVisibel">
-      <md-dialog-title>Adicionar uma Criança</md-dialog-title>
-
-      <form novalidate @submit.prevent="validateUser">
-        <md-field>
-          <label for="first-name">Nome</label>
-          <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Genego</label>
-          <md-input type="text" name="gender" id="gender" autocomplete="email" v-model="form.gender" :disabled="sending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Data de Nascimento</label>
-          <md-datepicker name="date" id="date" v-model="form.date" :disabled="sending" />
-        </md-field>
-      </form>
-
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="addKidDialogVisibel = false">Cancelar</md-button>
-        <md-button class="md-primary" @click="addPintDialogVisibel = false">Adicionar</md-button>
-      </md-dialog-actions>
-    </md-dialog>
-
-    <md-dialog :md-active.sync="addPointDialogVisibel">
-      <md-dialog-title>Adicionar uma medição</md-dialog-title>
-
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false">Cancelar</md-button>
-        <md-button class="md-primary" @click="showDialog = false">Adicionar</md-button>
-      </md-dialog-actions>
-    </md-dialog>
-
-    <modal-actions :taddKidDialogVisibel="addKidDialogVisibel" :addPointDialogVisibel="addPointDialogVisibel"  />
-
+    </div>
   </div>
 </template>
 
 <script>
-import SideMenu from '@/components/SideMenu'
-import ProfileHeader from '@/components/ProfileHeader'
+import UserAvatar from '@/components/UserAvatar'
 
 export default {
   name: 'Dashboard',
   components: {
-    ProfileHeader,
-    SideMenu
+    UserAvatar
   },
   data: () => ({
-    addKidDialogVisibel: false,
-    addPointDialogVisibel: false,
-    form: {}
+    name: 'Joãozinho Silva',
+    picture: 'https://placeimg.com/40/40/people/20'
   })
 }
 </script>
 
 <style lang="scss">
-.dashboard-view {
-  width: 100vw;
-  height: 100vh;
+@import '../styles/colors.scss';
+
+.card {
+  box-shadow: 0 0 20px 0 $--black;
+}
+.infocards-component {
   display: flex;
+  &__kid-info {
+    padding: 10px;
+  }
 }
 </style>
