@@ -32,7 +32,7 @@ export default {
     kids: [
       {
         id: 1,
-        name: 'Abbey Christansen Não sei das quantas',
+        name: 'Abbey Christansens',
         picture: 'https://placeimg.com/40/40/people/1'
       },
       {
