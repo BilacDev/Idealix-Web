@@ -88,6 +88,16 @@ export default {
     height: calc(100% - 80px);
     max-height: calc(100% - 80px);
     overflow: auto;
+    background-color: transparent !important;
+    .md-list {
+      &-item-content * {
+        color: $--white !important;
+      }
+      &-item-text {
+        display: block;
+        text-overflow: ellipsis;
+      }
+    }
     &::-webkit-scrollbar {
       width: 8px;
       background: transparent;
@@ -101,16 +111,6 @@ export default {
 }
 .md-subheader {
   color: $--background-opacity !important;
-}
-.md-list {
-  background-color: transparent !important;
-  &-item-content * {
-    color: $--white !important;
-  }
-  &-item-text {
-    display: block;
-    text-overflow: ellipsis;
-  }
 }
 
 </style>
