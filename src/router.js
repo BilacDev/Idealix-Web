@@ -6,20 +6,26 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
+      name: 'home',
       path: '/',
+      component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
       redirect: 'dashboard',
-      component: () => import(/* webpackChunkName: "container" */ '@/views/Container.vue'),
       children: [
         {
-          path: '/dashboard',
           name: 'dashboard',
-          component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard'),
+          path: '/dashboard',
+          component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard')
+        },
+        {
+          name: 'phofile',
+          path: '/profile',
+          component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile')
         }
       ]
     },
     {
-      path: '/login',
       name: 'login',
+      path: '/login',
       component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue')
     },
     {
