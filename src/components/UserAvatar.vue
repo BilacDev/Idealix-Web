@@ -33,5 +33,6 @@ export default {
 @import '../styles/colors.scss';
 
 .useravatar-component {
+  margin-right: 10px
 }
 </style>

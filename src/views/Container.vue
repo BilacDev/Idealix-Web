@@ -1,5 +1,5 @@
 <template>
-  <div class="dashboard-view">
+  <div class="main-container">
     <side-menu
       @addKidDialogVisable="addKidDialogVisibel = true"
       @addPointDialogVisable="addPointDialogVisibel = true"
@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss">
-.dashboard-view {
+.main-container {
   width: 100vw;
   height: 100vh;
   display: flex;

@@ -59,7 +59,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: -8px;
+    margin-right: -8px !important;
     padding: 8px;
     text-transform: capitalize;
     cursor: pointer;
@@ -77,10 +77,6 @@ export default {
       margin: 0px 10px 0px 0px !important;
       color: $--text-default !important;
     }
-  }
-  .md-avatar {
-    margin: 0;
-    margin-right: 15px;
   }
 }
 </style>
