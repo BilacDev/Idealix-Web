@@ -1,6 +1,7 @@
 <template>
   <md-avatar class="useravatar-component" :class="size">
     <img v-if="picture" :src="picture" alt="People">
+    <md-icon v-else-if="icon">{{ icon }}</md-icon>
     <span v-else>{{ initials }}</span>
   </md-avatar>
 </template>
@@ -11,6 +12,7 @@ export default {
   props: {
     name: String,
     picture: String,
+    icon: String,
     size: String
   },
   computed: {

@@ -82,10 +82,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/colors.scss';
+
 .main-container {
   width: 100vw;
   height: 100vh;
   display: flex;
+  background-color: $--background;
   main {
     flex: 1;
     display: flex;

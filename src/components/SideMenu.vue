@@ -78,7 +78,7 @@ export default {
   height: 100%;
   max-height: 100%;
   background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
-  box-shadow: 0 0 20px 0 $--black;
+  box-shadow: 0 0 15px 0 $--black;
   h1 {
     margin: 30px 16px;
     color: $--white;
@@ -99,7 +99,6 @@ export default {
     }
   }
 }
-
 .md-subheader {
   color: $--background-opacity !important;
 }

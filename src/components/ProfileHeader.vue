@@ -31,7 +31,7 @@ export default {
   },
   data: () => ({
     tmpname: 'Guilherme Rios da Cunha',
-    picture: 'https://placeimg.com/40/40/people/10'
+    // picture: 'https://placeimg.com/40/40/people/10'
   }),
   computed: {
     name () {
@@ -77,6 +77,9 @@ export default {
       margin: 0px 10px 0px 0px !important;
       color: $--text-default !important;
     }
+  }
+  &__avatar-icon {
+    background-color:  !important;
   }
 }
 </style>
