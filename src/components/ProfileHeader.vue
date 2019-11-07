@@ -31,7 +31,7 @@ export default {
   },
   data: () => ({
     tmpname: 'Guilherme Rios da Cunha',
-    picture: 'https://placeimg.com/40/40/people/10'
+    // picture: 'https://placeimg.com/40/40/people/10'
   }),
   computed: {
     name () {
@@ -57,12 +57,11 @@ export default {
     width: auto;
     height: auto;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    text-transform: capitalize;
     margin-right: -8px !important;
     padding: 8px;
-    text-transform: capitalize;
-    cursor: pointer;
   }
   &__user-name, .md-icon {
     font-size: 1.4em;
@@ -75,7 +74,7 @@ export default {
     }
     .md-icon {
       margin: 0px 10px 0px 0px !important;
-      color: $--text-default !important;
+      // color: $--text-default !important;
     }
   }
   &__avatar-icon {

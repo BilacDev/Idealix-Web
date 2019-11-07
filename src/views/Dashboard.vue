@@ -14,13 +14,6 @@
         <span>Saldavel</span>
       </div>
     </md-card>
-    <md-card class="dashboard-view__details-card">
-      <user-avatar icon="equalizer" size="md-large" />
-      <div class="dashboard-view__details-content">
-        <span>Ultimas Mediçoes</span>
-        <span>Saldavel</span>
-      </div>
-    </md-card>
   </div>
 </template>
 
