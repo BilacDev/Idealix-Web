@@ -12,7 +12,7 @@
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kids" v-key="kid.id" @click="">
+      <md-list-item v-for="kid in kids" :key="kids.id" @click="">
         <user-avatar :name="kid.name" :picture="kid.picture" />
         <span class="md-list-item-text">{{ kid.name }}</span>
       </md-list-item>
