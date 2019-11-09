@@ -47,22 +47,22 @@ export default {
       },
       {
         id: 4,
-        name: 'Angela Saemi',
+        name: 'Mamyugas Pieroi',
         picture: ''
       },
       {
         id: 5,
-        name: 'Guilherme Rios',
+        name: 'Blateuse Blateus',
         picture: 'https://placeimg.com/40/40/people/5'
       },
       {
         id: 6,
-        name: 'Francisco Hugo',
+        name: 'Kuyso Ismaul',
         picture: 'https://placeimg.com/40/40/people/6'
       },
       {
         id: 7,
-        name: 'Aline Capelli',
+        name: 'Woazoil Huena',
         picture: 'https://placeimg.com/40/40/people/7'
       }
     ]

@@ -9,15 +9,19 @@ export default new Router({
       name: 'home',
       path: '/',
       component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
-      redirect: 'dashboard',
+      redirect: 'profile',
       children: [
+        {
+          path: '/dashboard/',
+          redirect: 'profile'
+        },
         {
           name: 'dashboard',
           path: '/dashboard/:id',
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard')
         },
         {
-          name: 'phofile',
+          name: 'profile',
           path: '/profile',
           component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile')
         }
