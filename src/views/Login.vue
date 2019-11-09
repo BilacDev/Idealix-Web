@@ -1,6 +1,6 @@
 <template>
   <div class="login-view">
-    <div class="login-view__logo">
+    <div class="login-view__logo elevation">
       <h1>iDealix</h1>
     </div>
     <div class="login-view__content">
@@ -16,11 +16,11 @@
               <label for="password">Senha</label>
               <md-input type="password" name="password" id="password" v-model="form.password" :disabled="sending" />
             </md-field>
-            <div class="form-submit">
+            <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
               <md-button class="md-raised md-primary">Entrar</md-button>
             </div>
-            <span class="form-footer">Não possui uma conta? <a @click="externalTab = 'REGISTER'">Cadastre-se agora mesmo</a></span>
+            <span>Não possui uma conta? <a @click="externalTab = 'REGISTER'">Cadastre-se agora mesmo</a></span>
           </form>
         </transition>
 
@@ -39,16 +39,16 @@
               <label for="password">Senha</label>
               <md-input type="password" name="password" id="password" v-model="form.password" :disabled="sending" />
             </md-field>
-            <div class="form-submit">
+            <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class="md-raised md-primary">Li e aceito os <a @click="externalTab = 'TERMS'">Termos de Uso</a></md-checkbox>
               <md-button class="md-raised md-primary">Cadastrar</md-button>
             </div>
-            <span class="form-footer">Ja possui uma conta? <a @click="externalTab = 'LOGIN'">Clique aqui para acessar</a></span>
+            <span>Ja possui uma conta? <a @click="externalTab = 'LOGIN'">Clique aqui para acessar</a></span>
           </form>
         </transition>
 
         <transition name="fade">
-          <div v-if="externalTab === 'TERMS'" class="login-view__terms">
+          <div v-if="externalTab === 'TERMS'" class="login-view__form">
             <h1>Termos de uso</h1>
             <md-content class="md-scrollbar">
               <p>
@@ -92,11 +92,10 @@ export default {
   &__logo {
     width: 50%;
     height: 100%;
-    box-shadow: 0 0 20px 0 $--black;
     background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
     h1 {
       margin: 30px 16px;
-      color: white;
+      color: $--white;
       font-weight: 400;
     }
   }
@@ -110,33 +109,26 @@ export default {
   }
   &__form {
     width: 400px;
-    .form-submit {
-      width: 100%;
+    &--submit {
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
-    .form-footer {
-      width: 100%;
+    > span {
       display: block;
       text-align: center;
       margin-top: 40px;
     }
-  }
-  &__terms {
-    width: 400px;
+    > button {
+      float: right;
+      margin-top: 20px;
+    }
     .md-content {
       max-height: 400px;
       text-align: justify;
       overflow: auto;
       background-color: $--background;
-    }
-    p {
-      padding-right: 10px;
-    }
-    button {
-      float: right;
-      margin-top: 20px;
+      p {padding-right: 8px; margin: 0px}
     }
   }
 }
