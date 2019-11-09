@@ -1,5 +1,5 @@
 <template>
-  <div class="sidemenu-component">
+  <div class="sidemenu-component elevation">
     <h1>iDealix</h1>
     <md-list class="sidemenu-component__menu-items">
       <md-subheader>Opções</md-subheader>
@@ -83,16 +83,15 @@ export default {
   height: 100%;
   max-height: 100%;
   background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
-  box-shadow: 0 0 15px 0 $--black;
   h1 {
     margin: 30px 16px;
     color: $--white;
     font-weight: 400;
   }
   &__menu-items {
+    overflow: auto;
     height: calc(100% - 80px);
     max-height: calc(100% - 80px);
-    overflow: auto;
     background-color: transparent !important;
     .md-list {
       &-item-content * {
@@ -102,6 +101,10 @@ export default {
         display: block;
         text-overflow: ellipsis;
       }
+    }
+    .md-subheader {
+      color: $--white;
+      opacity: 0.5
     }
     &::-webkit-scrollbar {
       width: 8px;
@@ -113,9 +116,6 @@ export default {
       background-color: #FAFAFA20;
     }
   }
-}
-.md-subheader {
-  color: $--background-opacity !important;
 }
 
 </style>
