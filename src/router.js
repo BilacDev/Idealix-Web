@@ -13,7 +13,7 @@ export default new Router({
       children: [
         {
           name: 'dashboard',
-          path: '/dashboard',
+          path: '/dashboard/:id',
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/Dashboard')
         },
         {

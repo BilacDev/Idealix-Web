@@ -12,7 +12,7 @@
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kids" :key="kids.id" @click="">
+      <md-list-item v-for="kid in kids" :key="kid.id" @click="goToKid(kid.id)">
         <user-avatar :name="kid.name" :picture="kid.picture" />
         <span class="md-list-item-text">{{ kid.name }}</span>
       </md-list-item>
@@ -38,7 +38,7 @@ export default {
       {
         id: 2,
         name: 'Alex Nelson',
-        // picture: 'https://placeimg.com/40/40/people/2'
+        picture: ''
       },
       {
         id: 3,
@@ -46,27 +46,32 @@ export default {
         picture: 'https://placeimg.com/40/40/people/3'
       },
       {
-        id: 3,
+        id: 4,
         name: 'Angela Saemi',
-        // picture: 'https://placeimg.com/40/40/people/4'
+        picture: ''
       },
       {
-        id: 3,
+        id: 5,
         name: 'Guilherme Rios',
         picture: 'https://placeimg.com/40/40/people/5'
       },
       {
-        id: 3,
+        id: 6,
         name: 'Francisco Hugo',
         picture: 'https://placeimg.com/40/40/people/6'
       },
       {
-        id: 3,
+        id: 7,
         name: 'Aline Capelli',
         picture: 'https://placeimg.com/40/40/people/7'
       }
     ]
-  })
+  }),
+  methods: {
+    goToKid (kidId) {
+      this.$router.push({ path: `/dashboard/${kidId}` })
+    }
+  }
 }
 </script>
 
