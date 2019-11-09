@@ -54,6 +54,20 @@
 
     <md-dialog :md-active.sync="addPointDialogVisibel">
       <md-dialog-title>Adicionar uma medição</md-dialog-title>
+      <form novalidate @submit.prevent="validateUser">
+        <md-field>
+          <label for="first-name">Nome</label>
+          <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
+        </md-field>
+        <md-field>
+          <label for="gender">Genego</label>
+          <md-input type="text" name="gender" id="gender" autocomplete="email" v-model="form.gender" :disabled="sending" />
+        </md-field>
+        <md-field>
+          <label for="gender">Data de Nascimento</label>
+          <md-datepicker name="date" id="date" v-model="form.date" :disabled="sending" />
+        </md-field>
+      </form>
       <md-dialog-actions>
         <md-button class="md-primary" @click="showDialog = false">Cancelar</md-button>
         <md-button class="md-primary" @click="showDialog = false">Adicionar</md-button>

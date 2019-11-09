@@ -2,7 +2,7 @@
   <md-avatar class="useravatar-component" :class="size">
     <img v-if="picture" :src="picture" alt="People">
     <md-icon v-else-if="icon">{{ icon }}</md-icon>
-    <span v-else>{{ initials }}</span>
+    <span v-else>{{ nameInitials }}</span>
   </md-avatar>
 </template>
 
@@ -10,13 +10,29 @@
 export default {
   name: 'UserAvatar',
   props: {
-    name: String,
-    picture: String,
-    icon: String,
-    size: String
+    name: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    picture: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    icon: {
+      type: String,
+      required: false,
+      default: ''
+    },
+    size: {
+      type: String,
+      required: false,
+      default: ''
+    }
   },
   computed: {
-    initials () {
+    nameInitials () {
       if (this.name && this.name.trim()) {
         let split = this.name.split(' ').filter(Boolean)
         if (split.length > 1) {
@@ -35,6 +51,6 @@ export default {
 @import '../styles/colors.scss';
 
 .useravatar-component {
-  margin-right: 10px
+  margin-right: 8px
 }
 </style>
