@@ -7,7 +7,7 @@
   primary: $--primary-color,
   accent: $--secondary-color,
   background: $--background,
-  text: $--text-default,
+  text: $--default-text,
 ));
 @import "~vue-material/dist/theme/all";
 
@@ -26,4 +26,8 @@ a {
 
 .md-button {
   margin: 0;
+}
+
+.elevation {
+  box-shadow: 0 4px 26px 0 rgba(37,38,94,.20);
 }
