@@ -10,11 +10,11 @@
             <h1>Login</h1>
             <md-field>
               <label for="email">E-mail</label>
-              <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+              <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="isSending" />
             </md-field>
             <md-field>
               <label for="password">Senha</label>
-              <md-input type="password" name="password" id="password" v-model="form.password" :disabled="sending" />
+              <md-input type="password" name="password" id="password" v-model="form.password" :disabled="isSending" />
             </md-field>
             <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
@@ -29,15 +29,15 @@
             <h1>Cadastre-se</h1>
             <md-field>
               <label for="first-name">Nome</label>
-              <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="sending" />
+              <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="isSending" />
             </md-field>
             <md-field>
               <label for="email">E-mail</label>
-              <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="sending" />
+              <md-input type="email" name="email" id="email" autocomplete="email" v-model="form.email" :disabled="isSending" />
             </md-field>
             <md-field>
               <label for="password">Senha</label>
-              <md-input type="password" name="password" id="password" v-model="form.password" :disabled="sending" />
+              <md-input type="password" name="password" id="password" v-model="form.password" :disabled="isSending" />
             </md-field>
             <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class="md-raised md-primary">Li e aceito os <a @click="externalTab = 'TERMS'">Termos de Uso</a></md-checkbox>
@@ -77,7 +77,8 @@ export default {
       password: ''
     },
     formRules: {},
-    remember: false
+    remember: false,
+    isSending: false
   })
 }
 </script>

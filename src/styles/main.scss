@@ -19,15 +19,4 @@
   overflow: hidden;
 }
 
-a {
-  cursor: pointer;
-  text-decoration: none !important;
-}
-
-.md-button {
-  margin: 0;
-}
-
-.elevation {
-  box-shadow: 0 4px 26px 0 rgba(37,38,94,.20);
-}
+@import 'overrides.scss'

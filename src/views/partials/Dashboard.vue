@@ -35,7 +35,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../styles/colors.scss';
+@import '../../styles/colors.scss';
 
 .card {
   // box-shadow: 0 0 15px 0 $--black;

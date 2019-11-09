@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../styles/colors.scss';
+@import '../../styles/colors.scss';
 
 .sidemenu-component {
   width: 300px;
