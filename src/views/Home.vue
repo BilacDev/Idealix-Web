@@ -4,7 +4,6 @@
       @addKidDialogVisable="addKidDialogVisibel = true"
       @addPointDialogVisable="addPointDialogVisibel = true"
     />
-
     <main>
       <profile-header />
       <transition name="fade">
@@ -12,6 +11,60 @@
       </transition>
     </main>
 
+    <md-dialog :md-active.sync="addKidDialogVisibel" class="main-container__dialogs">
+      <md-dialog-title>Adicionar uma criança</md-dialog-title>
+      <form novalidate @submit.prevent="validateUser">
+        <md-field>
+          <md-icon>mood</md-icon>
+          <label for="name">Nome</label>
+          <md-input name="name" id="name" v-model="newKidForm.name" :disabled="isSending" />
+        </md-field>
+        <md-field>
+          <md-icon>wc</md-icon>
+          <label for="gender">Genero</label>
+          <md-select name="gender" id="gender" v-model="newKidForm.gender" :disabled="isSending">
+            <md-option value="m">Menino</md-option>
+            <md-option value="f">Menina</md-option>
+          </md-select>
+        </md-field>
+        <md-field>
+          <md-icon>today</md-icon>
+          <label for="gender">Data de nascimento</label>
+          <md-input name="birthday" id="birthday" v-model="newKidForm.birthday" :disabled="isSending" />
+        </md-field>
+      </form>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="addKidDialogVisibel = false">Cancelar</md-button>
+        <md-button class="md-primary md-raised" @click="addPintDialogVisibel = false">Adicionar</md-button>
+      </md-dialog-actions>
+    </md-dialog>
+
+    <md-dialog :md-active.sync="addPointDialogVisibel" class="main-container__dialogs">
+      <md-dialog-title>Adicionar um marco</md-dialog-title>
+      <form novalidate @submit.prevent="validateUser">
+        <md-field>
+          <md-icon>height</md-icon>
+          <label for="weight">Peso</label>
+          <md-input name="weight" id="weight" v-model="newMarkForm.weight" :disabled="isSending" />
+          <span class="md-suffix">Kg</span>
+        </md-field>
+        <md-field>
+          <md-icon>height</md-icon>
+          <label for="height">Altura</label>
+          <md-input name="height" id="height" v-model="newMarkForm.height" :disabled="isSending" />
+          <span class="md-suffix">m</span>
+        </md-field>
+        <md-field>
+          <md-icon>today</md-icon>
+          <label for="height">Data da medição</label>
+          <md-input name="madkday" id="madkday" v-model="newMarkForm.madkday" :disabled="isSending" />
+        </md-field>
+      </form>
+      <md-dialog-actions>
+        <md-button class="md-primary" @click="addPointDialogVisibel = false">Cancelar</md-button>
+        <md-button class="md-primary md-raised" @click="addPointDialogVisibel = false">Adicionar</md-button>
+      </md-dialog-actions>
+    </md-dialog>
 
     <md-speed-dial class="md-bottom-right">
       <md-speed-dial-target>
@@ -28,52 +81,6 @@
         </md-button>
       </md-speed-dial-content>
     </md-speed-dial>
-
-
-    <md-dialog :md-active.sync="addKidDialogVisibel">
-      <md-dialog-title>Adicionar uma Criança</md-dialog-title>
-      <form novalidate @submit.prevent="validateUser">
-        <md-field>
-          <label for="first-name">Nome</label>
-          <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="isSending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Genego</label>
-          <md-input type="text" name="gender" id="gender" autocomplete="email" v-model="form.gender" :disabled="isSending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Data de Nascimento</label>
-          <md-datepicker name="date" id="date" v-model="form.date" :disabled="isSending" />
-        </md-field>
-      </form>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="addKidDialogVisibel = false">Cancelar</md-button>
-        <md-button class="md-primary" @click="addPintDialogVisibel = false">Adicionar</md-button>
-      </md-dialog-actions>
-    </md-dialog>
-
-    <md-dialog :md-active.sync="addPointDialogVisibel">
-      <md-dialog-title>Adicionar uma medição</md-dialog-title>
-      <form novalidate @submit.prevent="validateUser">
-        <md-field>
-          <label for="first-name">Nome</label>
-          <md-input name="name" id="name" autocomplete="name" v-model="form.name" :disabled="isSending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Genego</label>
-          <md-input type="text" name="gender" id="gender" autocomplete="email" v-model="form.gender" :disabled="isSending" />
-        </md-field>
-        <md-field>
-          <label for="gender">Data de Nascimento</label>
-          <md-datepicker name="date" id="date" v-model="form.date" :disabled="isSending" />
-        </md-field>
-      </form>
-      <md-dialog-actions>
-        <md-button class="md-primary" @click="showDialog = false">Cancelar</md-button>
-        <md-button class="md-primary" @click="showDialog = false">Adicionar</md-button>
-      </md-dialog-actions>
-    </md-dialog>
-
   </div>
 </template>
 
@@ -91,7 +98,8 @@ export default {
     isSending: false,
     addKidDialogVisibel: false,
     addPointDialogVisibel: false,
-    form: {}
+    newKidForm: {},
+    newMarkForm: {}
   })
 }
 </script>
@@ -108,6 +116,25 @@ export default {
     flex: 1;
     display: flex;
     flex-direction: column;
+  }
+  &__dialogs {
+    border-radius: $--border-radius;
+    width: 400px;
+    padding:8px;
+    .md-dialog-title {
+      padding: 24px 16px 16px;
+      margin: 0;
+    }
+    .md-dialog-actions {
+      padding: 16px 16px 24px;
+      margin: 0;
+    }
+    .md-menu.md-select {
+      margin-left: 12px !important;
+    }
+    form {
+      padding: 0 16px
+    }
   }
 }
 </style>
