@@ -21,6 +21,9 @@
         <span>Peso: 22,16Kg - Altura: 1,25m</span>
       </div>
     </md-card>
+    <md-card class="dashboard-view__chart-card elevation">
+
+    </md-card>
   </div>
 </template>
 
@@ -71,9 +74,13 @@ export default {
       font-size: 1.2em;
       &:first-of-type {
         font-size: 1.6em;
-
       }
     }
+  }
+  &__chart-card {
+    display: flex;
+    flex: 1;
+    width: 100%
   }
 }
 </style>
