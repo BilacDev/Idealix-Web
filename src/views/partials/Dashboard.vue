@@ -24,7 +24,7 @@
       </md-card>
     </div>
     <md-card class="dashboard-view__chart-card elevation">
-
+      <img src="https://user-images.githubusercontent.com/5220584/43774415-4ab5ae88-9a49-11e8-813d-48d607d45225.png" width="100%" height="100%" alt="">
     </md-card>
   </div>
 </template>
@@ -60,6 +60,7 @@ export default {
   }
   &__details-card {
     flex: 1;
+    background-color: $--white !important;
     display: flex;
     align-items: center;
     padding: 16px;
