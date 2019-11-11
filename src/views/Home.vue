@@ -24,8 +24,8 @@
           <md-icon>wc</md-icon>
           <label for="gender">Genero</label>
           <md-select name="gender" id="gender" v-model="newKidForm.gender" :disabled="isSending">
-            <md-option value="m">Menino</md-option>
-            <md-option value="f">Menina</md-option>
+            <md-option value="m">É um Menino</md-option>
+            <md-option value="f">É uma Menina</md-option>
           </md-select>
         </md-field>
         <md-field>
