@@ -7,6 +7,10 @@ a {
   margin: 0;
 }
 
+.md-list-item-text {
+  flex-direction: row !important;
+}
+
 .elevation {
   box-shadow: 0 2px 10px 0 rgba(37,38,94,.20);
 }

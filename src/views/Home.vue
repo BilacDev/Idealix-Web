@@ -182,9 +182,6 @@ export default {
     .md-menu.md-select {
       margin-left: 12px !important;
     }
-    .md-list-item-text {
-      flex-direction: row !important;
-    }
     form {
       padding: 0 16px
     }
