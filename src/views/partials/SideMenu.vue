@@ -12,7 +12,7 @@
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kids" :key="kid.id" @click="goToKid(kid.id)">
+      <md-list-item v-for="kid in kidsList" :key="kid.id" @click="goToKid(kid.id)">
         <user-avatar :name="kid.name" :picture="kid.picture" />
         <span class="md-list-item-text">{{ kid.name }}</span>
       </md-list-item>
@@ -28,44 +28,15 @@ export default {
   components: {
     UserAvatar
   },
+  props: {
+    kidsList: {
+      type: Array,
+      default: [],
+      required: true,
+    }
+  },
   data: () => ({
-    kids: [
-      {
-        id: 1,
-        name: 'Abbey Christansens',
-        picture: 'https://placeimg.com/40/40/people/1'
-      },
-      {
-        id: 2,
-        name: 'Alex Nelson',
-        picture: ''
-      },
-      {
-        id: 3,
-        name: 'Mary Johnson',
-        picture: 'https://placeimg.com/40/40/people/3'
-      },
-      {
-        id: 4,
-        name: 'Mamyugas Pieroi',
-        picture: ''
-      },
-      {
-        id: 5,
-        name: 'Blateuse Blateus',
-        picture: 'https://placeimg.com/40/40/people/5'
-      },
-      {
-        id: 6,
-        name: 'Kuyso Ismaul',
-        picture: 'https://placeimg.com/40/40/people/6'
-      },
-      {
-        id: 7,
-        name: 'Woazoil Huena',
-        picture: 'https://placeimg.com/40/40/people/7'
-      }
-    ]
+
   }),
   methods: {
     goToKid (kidId) {

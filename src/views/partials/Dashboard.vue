@@ -1,17 +1,24 @@
 <template>
   <div class="dashboard-view">
-    <md-card class="dashboard-view__details-card">
+    <md-card class="dashboard-view__details-card elevation">
       <user-avatar :name="name" :picture="picture" size="md-large" />
       <div class="dashboard-view__details-content">
         <span>{{ name }}</span>
         <span>{{ age }} Anos - {{ gender }}</span>
       </div>
     </md-card>
-    <md-card class="dashboard-view__details-card">
+    <md-card class="dashboard-view__details-card elevation">
       <user-avatar icon="favorite" size="md-large" />
       <div class="dashboard-view__details-content">
         <span>Status Atual</span>
         <span>Saldavel</span>
+      </div>
+    </md-card>
+    <md-card class="dashboard-view__details-card elevation">
+      <user-avatar icon="favorite" size="md-large" />
+      <div class="dashboard-view__details-content">
+        <span>Ultimo marco</span>
+        <span>Peso: 22,16Kg - Altura: 1,25m</span>
       </div>
     </md-card>
   </div>
@@ -42,13 +49,16 @@ export default {
   box-shadow: 0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12);
 }
 .dashboard-view {
-  padding: 0px 30px 30px 30px;
+  padding: 0px 16px 16px 16px;
   display: flex;
   &__details-card {
+    // width: 33.3%;
+    flex: 1;
     display: flex;
-    width: 50%;
+    align-items: center;
     padding: 16px;
     margin-right: 20px;
+    border-radius: $--border-radius;
     &:last-child {
       margin-right: 0px;
     }
