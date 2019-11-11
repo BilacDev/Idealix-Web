@@ -3,6 +3,7 @@
     <side-menu
       @addKidDialogVisable="addKidDialogVisibel = true"
       @addPointDialogVisable="addPointDialogVisibel = true"
+      :kidsList="kidsList"
     />
     <main>
       <profile-header />
@@ -43,7 +44,17 @@
       <md-dialog-title>Adicionar um marco</md-dialog-title>
       <form novalidate @submit.prevent="validateUser">
         <md-field>
-          <md-icon>height</md-icon>
+          <md-icon>mood</md-icon>
+          <label for="gender">Criança</label>
+          <md-select name="kid" id="kid" v-model="newMarkForm.kid" :disabled="isSending">
+            <md-option v-for="kid in kidsList" :key="kid.id" :value="kid.id">
+              <user-avatar :name="kid.name" :picture="kid.picture" size="md-small" />
+              {{ kid.name }}
+            </md-option>
+          </md-select>
+        </md-field>
+        <md-field>
+          <md-icon>360</md-icon>
           <label for="weight">Peso</label>
           <md-input name="weight" id="weight" v-model="newMarkForm.weight" :disabled="isSending" />
           <span class="md-suffix">Kg</span>
@@ -86,12 +97,14 @@
 
 <script>
 import SideMenu from '@/views/partials/SideMenu'
+import UserAvatar from '@/components/UserAvatar'
 import ProfileHeader from '@/components/ProfileHeader'
 
 export default {
   name: 'Home',
   components: {
     ProfileHeader,
+    UserAvatar,
     SideMenu
   },
   data: () => ({
@@ -99,7 +112,44 @@ export default {
     addKidDialogVisibel: false,
     addPointDialogVisibel: false,
     newKidForm: {},
-    newMarkForm: {}
+    newMarkForm: {},
+    kidsList: [
+      {
+        id: 1,
+        name: 'Abbey Christansens',
+        picture: 'https://placeimg.com/40/40/people/1'
+      },
+      {
+        id: 2,
+        name: 'Alex Nelson',
+        picture: ''
+      },
+      {
+        id: 3,
+        name: 'Mary Johnson',
+        picture: 'https://placeimg.com/40/40/people/3'
+      },
+      {
+        id: 4,
+        name: 'Mamyugas Pieroi',
+        picture: ''
+      },
+      {
+        id: 5,
+        name: 'Blateuse Blateus',
+        picture: 'https://placeimg.com/40/40/people/5'
+      },
+      {
+        id: 6,
+        name: 'Kuyso Ismaul',
+        picture: 'https://placeimg.com/40/40/people/6'
+      },
+      {
+        id: 7,
+        name: 'Woazoil Huena',
+        picture: 'https://placeimg.com/40/40/people/7'
+      }
+    ]
   })
 }
 </script>
@@ -131,6 +181,9 @@ export default {
     }
     .md-menu.md-select {
       margin-left: 12px !important;
+    }
+    .md-list-item-text {
+      flex-direction: row !important;
     }
     form {
       padding: 0 16px
