@@ -7,12 +7,12 @@
         <md-icon>arrow_drop_down</md-icon>
       </div>
       <md-menu-content>
-        <md-menu-item class="profileheader-component__action-icon" @click="">
+        <md-menu-item class="profileheader-component__action-icon" @click="$router.push('/profile')">
           <md-icon>person</md-icon>
           <span>Perfil</span>
         </md-menu-item>
         <md-divider/>
-        <md-menu-item class="profileheader-component__action-icon" @click="">
+        <md-menu-item class="profileheader-component__action-icon" @click="$router.push('/login')">
           <md-icon>directions_run</md-icon>
           <span>
             Sair
@@ -42,7 +42,7 @@ export default {
       let mainNames = fullName[0] + ' ' + fullName[fullName.length - 1]
       return mainNames
     }
-  }
+  },
 }
 </script>
 
