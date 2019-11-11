@@ -51,6 +51,7 @@ export default {
 @import '../styles/colors.scss';
 
 .useravatar-component {
-  margin-right: 8px
+  margin-right: 8px;
+  margin-left: 0px !important;
 }
 </style>
