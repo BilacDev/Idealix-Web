@@ -35,8 +35,8 @@
         </md-field>
       </form>
       <md-dialog-actions>
-        <md-button class="md-primary" @click="addKidDialogVisibel = false">Cancelar</md-button>
-        <md-button class="md-primary md-raised" @click="addPintDialogVisibel = false">Adicionar</md-button>
+        <md-button class="md-primary" @click="addKidDialogVisibel = false" :disabled="isSending">Cancelar</md-button>
+        <md-button class="md-primary md-raised" @click="addPintDialogVisibel = false" :disabled="isSending">Adicionar</md-button>
       </md-dialog-actions>
     </md-dialog>
 
@@ -72,8 +72,8 @@
         </md-field>
       </form>
       <md-dialog-actions>
-        <md-button class="md-primary" @click="addPointDialogVisibel = false">Cancelar</md-button>
-        <md-button class="md-primary md-raised" @click="addPointDialogVisibel = false">Adicionar</md-button>
+        <md-button class="md-primary" @click="addPointDialogVisibel = false" :disabled="isSending">Cancelar</md-button>
+        <md-button class="md-primary md-raised" @click="addPointDialogVisibel = false" :disabled="isSending">Adicionar</md-button>
       </md-dialog-actions>
     </md-dialog>
 

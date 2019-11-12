@@ -17,8 +17,8 @@
               <md-input type="password" name="password" id="password" v-model="form.password" :disabled="isSending" />
             </md-field>
             <div class="login-view__form--submit">
-              <md-checkbox v-model="remember" class=" md-raised md-primary">Lembre-se de mim</md-checkbox>
-              <md-button class="md-raised md-primary">Entrar</md-button>
+              <md-checkbox v-model="remember" class=" md-raised md-primary" :disabled="isSending">Lembre-se de mim</md-checkbox>
+              <md-button class="md-raised md-primary" @click="" :disabled="isSending">Entrar</md-button>
             </div>
             <span>Não possui uma conta? <a @click="externalTab = 'REGISTER'">Cadastre-se agora mesmo</a></span>
           </form>
@@ -40,8 +40,8 @@
               <md-input type="password" name="password" id="password" v-model="form.password" :disabled="isSending" />
             </md-field>
             <div class="login-view__form--submit">
-              <md-checkbox v-model="remember" class="md-raised md-primary">Li e aceito os <a @click="externalTab = 'TERMS'">Termos de Uso</a></md-checkbox>
-              <md-button class="md-raised md-primary">Cadastrar</md-button>
+              <md-checkbox v-model="remember" class="md-raised md-primary" :disabled="isSending">Li e aceito os <a @click="externalTab = 'TERMS'">Termos de Uso</a></md-checkbox>
+              <md-button class="md-raised md-primary" @click="" :disabled="isSending">Cadastrar</md-button>
             </div>
             <span>Ja possui uma conta? <a @click="externalTab = 'LOGIN'">Clique aqui para acessar</a></span>
           </form>
