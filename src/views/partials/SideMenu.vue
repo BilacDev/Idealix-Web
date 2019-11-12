@@ -31,13 +31,10 @@ export default {
   props: {
     kidsList: {
       type: Array,
-      default: [],
       required: true,
+      default: () => []
     }
   },
-  data: () => ({
-
-  }),
   methods: {
     goToKid (kidId) {
       this.$router.push({ path: `/dashboard/${kidId}` })

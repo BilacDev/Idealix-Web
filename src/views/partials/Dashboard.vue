@@ -24,7 +24,7 @@
       </md-card>
     </div>
     <md-card class="dashboard-view__chart-card elevation">
-      <history-chart class="dashboard-view__history-chart" :kid-history="history"></history-chart>
+      <history-chart class="dashboard-view__history-chart" :kid-history="history" :styles="chartStyles"></history-chart>
     </md-card>
   </div>
 </template>
@@ -46,6 +46,20 @@ export default {
     picture: 'https://placeimg.com/40/40/people/20',
     history: {}
   }),
+  computed: {
+    chartStyles () {
+      const styles = {
+        flex: 1,
+        display: 'flex',
+        position: 'relative',
+        height: '100%',
+        width: '100%',
+        maxHeight: '100%',
+        maxWidth: '100%'
+      }
+      return styles
+    }
+  },
   created () {
     this.history = {
       labels: ['1', '2'],
@@ -111,10 +125,6 @@ export default {
     display: flex;
     padding: 16px;
     border-radius: $--border-radius;
-  }
-  &____history-chart {
-    width: 100%;
-    height: 100%
   }
 }
 </style>
