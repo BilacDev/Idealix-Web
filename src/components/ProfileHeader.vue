@@ -42,7 +42,7 @@ export default {
       let mainNames = fullName[0] + ' ' + fullName[fullName.length - 1]
       return mainNames
     }
-  },
+  }
 }
 </script>
 
