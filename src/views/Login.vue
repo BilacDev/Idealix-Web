@@ -18,7 +18,7 @@
             </md-field>
             <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class=" md-raised md-primary" :disabled="isSending">Lembre-se de mim</md-checkbox>
-              <md-button class="md-raised md-primary" @click="" :disabled="isSending">Entrar</md-button>
+              <md-button class="md-raised md-primary" @click="validateLogin" :disabled="isSending">Entrar</md-button>
             </div>
             <span>Não possui uma conta? <a @click="externalTab = 'REGISTER'">Cadastre-se agora mesmo</a></span>
           </form>
@@ -41,7 +41,7 @@
             </md-field>
             <div class="login-view__form--submit">
               <md-checkbox v-model="remember" class="md-raised md-primary" :disabled="isSending">Li e aceito os <a @click="externalTab = 'TERMS'">Termos de Uso</a></md-checkbox>
-              <md-button class="md-raised md-primary" @click="" :disabled="isSending">Cadastrar</md-button>
+              <md-button class="md-raised md-primary" @click="createAccount" :disabled="isSending">Cadastrar</md-button>
             </div>
             <span>Ja possui uma conta? <a @click="externalTab = 'LOGIN'">Clique aqui para acessar</a></span>
           </form>
@@ -79,7 +79,15 @@ export default {
     formRules: {},
     remember: false,
     isSending: false
-  })
+  }),
+  methods: {
+    createAccount () {
+
+    },
+    validateLogin () {
+
+    }
+  }
 }
 </script>
 

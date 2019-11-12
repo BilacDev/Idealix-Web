@@ -24,7 +24,7 @@
       </md-card>
     </div>
     <md-card class="dashboard-view__chart-card elevation">
-      <history-chart :kid-history="history"></history-chart>
+      <history-chart class="dashboard-view__history-chart" :kid-history="history"></history-chart>
     </md-card>
   </div>
 </template>
@@ -44,8 +44,11 @@ export default {
     age: '06',
     gender: 'Menino',
     picture: 'https://placeimg.com/40/40/people/20',
-    history: {
-      labels: [this.getRandomInt(), this.getRandomInt()],
+    history: {}
+  }),
+  created () {
+    this.history = {
+      labels: ['1', '2'],
       datasets: [
         {
           label: 'Data One',
@@ -59,11 +62,11 @@ export default {
         }
       ]
     }
-  }),
+  },
   methods: {
     getRandomInt () {
-        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-      }
+      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    }
   }
 }
 </script>
@@ -104,11 +107,14 @@ export default {
     }
   }
   &__chart-card {
-    align-items: stretch;
-    align-self: stretch;
-    display: flex;
     flex: 1;
+    display: flex;
+    padding: 16px;
     border-radius: $--border-radius;
+  }
+  &____history-chart {
+    width: 100%;
+    height: 100%
   }
 }
 </style>
