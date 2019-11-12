@@ -24,25 +24,47 @@
       </md-card>
     </div>
     <md-card class="dashboard-view__chart-card elevation">
-      <img src="https://user-images.githubusercontent.com/5220584/43774415-4ab5ae88-9a49-11e8-813d-48d607d45225.png" width="100%" height="100%" alt="">
+      <history-chart :kid-history="history"></history-chart>
     </md-card>
   </div>
 </template>
 
 <script>
 import UserAvatar from '@/components/UserAvatar'
+import HistoryChart from '@/components/HistoryChart'
 
 export default {
   name: 'Dashboard',
   components: {
-    UserAvatar
+    UserAvatar,
+    HistoryChart
   },
   data: () => ({
     name: 'Joãozinho Silva',
     age: '06',
     gender: 'Menino',
-    picture: 'https://placeimg.com/40/40/people/20'
-  })
+    picture: 'https://placeimg.com/40/40/people/20',
+    history: {
+      labels: [this.getRandomInt(), this.getRandomInt()],
+      datasets: [
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [this.getRandomInt(), this.getRandomInt()]
+        },
+        {
+          label: 'Data One',
+          backgroundColor: '#f87979',
+          data: [this.getRandomInt(), this.getRandomInt()]
+        }
+      ]
+    }
+  }),
+  methods: {
+    getRandomInt () {
+        return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+      }
+  }
 }
 </script>
 
