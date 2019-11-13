@@ -44,7 +44,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
 
 .sidemenu-component {
   width: 300px;
@@ -52,7 +52,10 @@ export default {
   max-height: 100%;
   background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
   h1 {
-    margin: 30px 16px;
+    margin: 30px 16px 30px;
+    height: 24px;
+    display: flex;
+    align-items: center;
     color: $--white;
     font-weight: 400;
   }
