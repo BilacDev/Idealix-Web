@@ -19,7 +19,7 @@
         <user-avatar icon="favorite" size="md-large" />
         <div class="dashboard-view__details-content">
           <span>Ultimo marco</span>
-          <span>Peso: 22,16Kg - Altura: 1,25m</span>
+          <span>22,16Kg - 1,25m</span>
         </div>
       </md-card>
     </div>
@@ -86,24 +86,21 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../styles/colors.scss';
+@import '../../styles/variables.scss';
 
 .dashboard-view {
-  padding: 0px 16px 16px 16px;
+  padding: 0px 20px 20px 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  &__top-cards {
-    display: flex;
-    margin-bottom: 16px;
-  }
+  &__top-cards {display: flex;}
   &__details-card {
     flex: 1;
     background-color: $--white !important;
     display: flex;
     align-items: center;
     padding: 16px;
-    margin-right: 20px;
+    margin-right: 16px;
     border-radius: $--border-radius;
     &:last-child {
       margin-right: 0px;
@@ -114,9 +111,9 @@ export default {
     flex-direction: column;
     margin: 5px;
     span {
-      font-size: 1.2em;
+      font-size: 1.12em;
       &:first-of-type {
-        font-size: 1.6em;
+        font-size: 1.4em;
       }
     }
   }
@@ -124,6 +121,7 @@ export default {
     flex: 1;
     display: flex;
     padding: 16px;
+    margin-top: 16px;
     border-radius: $--border-radius;
   }
 }

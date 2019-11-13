@@ -123,7 +123,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../styles/colors.scss';
+@import '../styles/variables.scss';
 
 .main-container {
   width: 100vw;
