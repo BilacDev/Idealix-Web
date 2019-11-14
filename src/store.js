@@ -5,10 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userInfo: {
+      id: 1,
+      name: 'Guilherme Rios da Cunha',
+      picture: 'https://placeimg.com/40/40/people/10'
+    },
     kidsList: [
       {
         id: 1,
-        name: 'Abbey Christansens',
+        name: 'Abbey Christansens Teste Nome Grande',
         picture: 'https://placeimg.com/40/40/people/1'
       },
       {
