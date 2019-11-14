@@ -1,22 +1,20 @@
 <template>
   <header class="profileheader-component">
     <md-menu md-align-trigger md-direction="bottom-end" md-size="medium">
-      <div class="profileheader-component__menu-button md-button"  md-menu-trigger>
+      <div class="profileheader-component__dropdown-button md-button"  md-menu-trigger>
         <user-avatar :name="mainNames" :picture="userInfo.picture" size="md-small" class="profileheader-component__avatar-icon" />
-        <span class="profileheader-component__user-name">{{ mainNames }}</span>
-        <md-icon>arrow_drop_down</md-icon>
+        <span class="profileheader-component__dropdown-button--text">{{ mainNames }}</span>
+        <md-icon class="profileheader-component__dropdown-button--text">arrow_drop_down</md-icon>
       </div>
-      <md-menu-content class="profileheader-component__menu-list">
-        <md-menu-item class="profileheader-component__action-icon" @click="$router.push('/profile')">
-          <md-icon>person</md-icon>
-          <span>Perfil</span>
+      <md-menu-content>
+        <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/profile')">
+          <md-icon class="profileheader-component__dropdown-item--icon">person</md-icon>
+          <span class="md-list-item-text">Perfil</span>
         </md-menu-item>
         <md-divider/>
-        <md-menu-item class="profileheader-component__action-icon" @click="$router.push('/login')">
-          <md-icon>directions_run</md-icon>
-          <span>
-            Sair
-          </span>
+        <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/login')">
+          <md-icon class="profileheader-component__dropdown-item--icon">directions_run</md-icon>
+          <span class="md-list-item-text">Sair</span>
         </md-menu-item>
       </md-menu-content>
     </md-menu>
@@ -29,14 +27,10 @@ import UserAvatar from '@/components/UserAvatar'
 export default {
   name: 'ProfileHeader',
   components: { UserAvatar },
-  data: () => ({
-    userInfo: {
-      id: 1,
-      name: 'Guilherme Rios da Cunha',
-      picture: 'https://placeimg.com/40/40/people/10'
-    }
-  }),
   computed: {
+    userInfo () {
+      return this.$store.state.userInfo
+    },
     mainNames () {
       let fullName = this.userInfo.name.split(' ')
       let mainNames = fullName[0] + ' ' + fullName[fullName.length - 1]
@@ -56,33 +50,19 @@ export default {
   width: calc(100% - 32px);
   height: 24px;
   margin: 30px 16px;
-  &__menu-button {
-    cursor: pointer;
+  &__dropdown-button {
     width: auto;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-transform: capitalize;
+    text-transform: uppercase;
     margin-right: -4px !important;
-    padding: 8px 0px 8px 8px;
+    padding: 10px 0px 10px 8px;
+    &--text {font-size: 1.2em; color: $--default-text !important;}
   }
-  &__user-name, .md-icon {
-    font-size: 1.2em;
-    color: $--default-text !important;
-  }
-  &__action-icon {
-    .md-list-item-content {
-      justify-content: flex-start;
-      font-family: 'Montserrat', sans-serif;
-    }
-    .md-icon {
-      margin-right: 8px !important;
-      color: $--accent-text !important;
-    }
-  }
-  &__menu-list .md-list {
-    background-color: $--white !important;
+  &__dropdown-item {
+    &--icon {margin-right: 8px !important;}
   }
 }
 </style>

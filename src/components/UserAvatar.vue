@@ -52,6 +52,6 @@ export default {
 
 .useravatar-component {
   margin-right: 8px;
-  margin-left: 0px !important;
+  margin-left: 0px;
 }
 </style>

@@ -25,14 +25,10 @@ import UserAvatar from '@/components/UserAvatar'
 
 export default {
   name: 'SideMenu',
-  components: {
-    UserAvatar
-  },
-  props: {
-    kidsList: {
-      type: Array,
-      required: true,
-      default: () => []
+  components: { UserAvatar },
+  computed: {
+    kidsList () {
+      return this.$store.state.kidsList || []
     }
   },
   methods: {
@@ -52,12 +48,12 @@ export default {
   max-height: 100%;
   background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
   h1 {
-    margin: 30px 16px 30px;
     height: 24px;
     display: flex;
     align-items: center;
-    color: $--white;
+    margin: 30px 16px;
     font-weight: 400;
+    color: $--white;
   }
   &__menu-items {
     overflow: auto;
@@ -65,28 +61,12 @@ export default {
     max-height: calc(100% - 80px);
     background-color: transparent !important;
     .md-list {
-      &-item-content * {
-        color: $--white !important;
-      }
-      &-item-text {
-        display: block;
-        text-overflow: ellipsis;
-      }
+      &-item-content * {color: $--white !important;}
+      &-item-text {display: block; text-overflow: ellipsis; text-transform: capitalize;}
     }
-    .md-subheader {
-      color: $--white;
-      opacity: 0.5
-    }
-    &::-webkit-scrollbar {
-      width: 8px;
-      background: transparent;
-      transition: all .4s;
-    }
-    &::-webkit-scrollbar-thumb {
-      border-radius: 4px;
-      background-color: #FAFAFA20;
-    }
+    .md-subheader {color: $--white; opacity: 0.5;}
+    &::-webkit-scrollbar {width: 8px; background: transparent;}
+    &::-webkit-scrollbar-thumb {border-radius: 4px; background-color: #FAFAFA20;}
   }
 }
-
 </style>
