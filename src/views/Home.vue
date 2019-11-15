@@ -5,7 +5,7 @@
       @addPointDialogVisable="addPointDialogVisibel = true"
       :kidsList="kidsList"
     />
-    <main>
+    <main class="main-container__content">
       <profile-header />
       <transition name="fade">
         <router-view/>
@@ -14,7 +14,7 @@
 
     <md-dialog :md-active.sync="addKidDialogVisibel" class="main-container__dialogs">
       <md-dialog-title>Adicionar uma criança</md-dialog-title>
-      <form novalidate @submit.prevent="validateUser">
+      <form novalidate @submit.prevent="validateUser" class="main-container__dialogs--form">
         <md-field>
           <md-icon>mood</md-icon>
           <label for="name">Nome</label>
@@ -42,7 +42,7 @@
 
     <md-dialog :md-active.sync="addPointDialogVisibel" class="main-container__dialogs">
       <md-dialog-title>Adicionar um marco</md-dialog-title>
-      <form novalidate @submit.prevent="validateUser">
+      <form novalidate @submit.prevent="validateUser" class="main-container__dialogs--form">
         <md-field>
           <md-icon>mood</md-icon>
           <label for="gender">Criança</label>
@@ -130,7 +130,7 @@ export default {
   height: 100vh;
   display: flex;
   background-color: $--background;
-  main {
+  &__content {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -138,21 +138,11 @@ export default {
   &__dialogs {
     border-radius: $--border-radius;
     width: 400px;
-    padding:8px;
-    .md-dialog-title {
-      padding: 24px 16px 16px;
-      margin: 0;
-    }
-    .md-dialog-actions {
-      padding: 16px 16px 24px;
-      margin: 0;
-    }
-    .md-menu.md-select {
-      margin-left: 12px !important;
-    }
-    form {
-      padding: 0 16px
-    }
+    padding: 8px;
+    .md-dialog-title {padding: 24px 16px 16px; margin: 0;}
+    .md-dialog-actions {padding: 16px; margin: 0;}
+    .md-menu.md-select {margin-left: 12px !important;}
+    &--form {padding: 0 16px}
   }
 }
 </style>
