@@ -121,6 +121,7 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      .md-button {margin: 0;}
     }
     &--switch {
       display: block;
