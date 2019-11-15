@@ -1,29 +1,29 @@
 <template>
   <div class="dashboard-view">
-    <div class="dashboard-view__top-cards">
+    <div class="dashboard-view__triple">
       <md-card class="dashboard-view__details-card elevation">
         <user-avatar :name="name" :picture="picture" size="md-large" />
-        <div class="dashboard-view__details-content">
+        <div class="dashboard-view__card-text">
           <span>{{ name }}</span>
           <span>{{ age }} Anos - {{ gender }}</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
         <user-avatar icon="favorite" size="md-large" />
-        <div class="dashboard-view__details-content">
+        <div class="dashboard-view__card-text">
           <span>Status Atual</span>
           <span>Saldavel</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
         <user-avatar icon="favorite" size="md-large" />
-        <div class="dashboard-view__details-content">
+        <div class="dashboard-view__card-text">
           <span>Ultimo marco</span>
           <span>22,16Kg - 1,25m</span>
         </div>
       </md-card>
     </div>
-    <md-card class="dashboard-view__chart-card elevation">
+    <md-card class="dashboard-view__chart elevation">
       <history-chart class="dashboard-view__history-chart" :kid-history="history" :styles="chartStyles"></history-chart>
     </md-card>
   </div>
@@ -93,23 +93,22 @@ export default {
   display: flex;
   flex-direction: column;
   flex: 1;
-  &__top-cards {display: flex;}
+  &__triple {
+    display: flex;
+  }
   &__details-card {
     flex: 1;
-    background-color: $--white !important;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     padding: 16px;
-    margin-right: 16px;
+    margin-right: 20px;
     border-radius: $--border-radius;
-    &:last-child {
-      margin-right: 0px;
-    }
+    &:last-child {margin-right: 0px;}
   }
-  &__details-content {
+  &__card-text {
     display: flex;
     flex-direction: column;
-    margin: 5px;
     span {
       font-size: 1.12em;
       &:first-of-type {
@@ -117,11 +116,11 @@ export default {
       }
     }
   }
-  &__chart-card {
+  &__chart {
     flex: 1;
     display: flex;
     padding: 16px;
-    margin-top: 16px;
+    margin-top: 20px;
     border-radius: $--border-radius;
   }
 }
