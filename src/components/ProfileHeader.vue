@@ -64,5 +64,8 @@ export default {
   &__dropdown-item {
     &--icon {margin-right: 8px !important;}
   }
+  &__avatar-icon {
+    margin-right: 8px;
+  }
 }
 </style>
