@@ -27,3 +27,13 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Debito Técnico
+- Adicionar Internacionalização
+- Tornar sistema responsivo (versao mobile)
+- Adicionar edição de criança
+- Adicionar página de perfil
+- Adicionar upload de imagem
+- Adicionar sistema de recuperar senha (com pergunta secreta)
+- Login com google e facebook
+- Botão 'Como funciona'
