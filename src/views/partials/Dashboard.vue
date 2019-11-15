@@ -2,23 +2,23 @@
   <div class="dashboard-view">
     <div class="dashboard-view__triple">
       <md-card class="dashboard-view__details-card elevation">
-        <user-avatar :name="name" :picture="picture" size="md-large" />
-        <div class="dashboard-view__card-text">
-          <span>{{ name }}</span>
+        <user-avatar :name="name" :picture="picture" size="md-large" class="dashboard-view__details-icon" />
+        <div class="dashboard-view__details-text">
+          <h2>{{ name }}</h2>
           <span>{{ age }} Anos - {{ gender }}</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
-        <user-avatar icon="favorite" size="md-large" />
-        <div class="dashboard-view__card-text">
-          <span>Status Atual</span>
+        <user-avatar icon="favorite" size="md-large" class="dashboard-view__details-icon"/>
+        <div class="dashboard-view__details-text">
+          <h2>Status Atual</h2>
           <span>Saldavel</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
-        <user-avatar icon="favorite" size="md-large" />
-        <div class="dashboard-view__card-text">
-          <span>Ultimo marco</span>
+        <user-avatar icon="data_usage" size="md-large" class="dashboard-view__details-icon"/>
+        <div class="dashboard-view__details-text">
+          <h2>Ultimo marco</h2>
           <span>22,16Kg - 1,25m</span>
         </div>
       </md-card>
@@ -43,7 +43,7 @@ export default {
     name: 'Joãozinho Silva',
     age: '06',
     gender: 'Menino',
-    picture: 'https://placeimg.com/40/40/people/20',
+    // picture: 'https://placeimg.com/40/40/people/20',
     history: {}
   }),
   computed: {
@@ -62,17 +62,17 @@ export default {
   },
   created () {
     this.history = {
-      labels: ['1', '2'],
+      labels: ['1', '2', '3', '4'],
       datasets: [
         {
           label: 'Data One',
           backgroundColor: '#f87979',
-          data: [this.getRandomInt(), this.getRandomInt()]
+          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         },
         {
           label: 'Data One',
           backgroundColor: '#f87979',
-          data: [this.getRandomInt(), this.getRandomInt()]
+          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         }
       ]
     }
@@ -105,16 +105,29 @@ export default {
     margin-right: 20px;
     border-radius: $--border-radius;
     &:last-child {margin-right: 0px;}
+    &:nth-child(1) .dashboard-view__details-icon {background-color: #621ba2;}
+    // &:nth-child(1) .dashboard-view__details-icon {background-color: #4b62d6;}
+    // &:nth-child(1) .dashboard-view__details-icon {background-color: #ffad31;}
+    &:nth-child(2) .dashboard-view__details-icon {background-color: #d44eb7;}
+    // &:nth-child(2) .dashboard-view__details-icon {background-color: #3471e2;}
+    &:nth-child(3) .dashboard-view__details-icon {background-color: #9f64ea;}
+    // &:nth-child(3) .dashboard-view__details-icon {background-color: #f7ae0a;}
+    // &:nth-child(3) .dashboard-view__details-icon {background-color: #da3813;}
   }
-  &__card-text {
+  &__details-icon {
+    .md-icon, span {color: $--white !important;}
+  }
+  &__details-text {
     display: flex;
     flex-direction: column;
     margin-left: 8px;
     span {
       font-size: 1.12em;
-      &:first-of-type {
-        font-size: 1.4em;
-      }
+    }
+    h2 {
+      font-size: 1.4em;
+      font-weight: 400;
+      margin: 0;
     }
   }
   &__chart {
