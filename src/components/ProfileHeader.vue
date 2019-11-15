@@ -13,7 +13,7 @@
         </md-menu-item>
         <md-divider/>
         <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/login')">
-          <md-icon>directions_run</md-icon>
+          <md-icon class="profileheader-component__dropdown-item--icon">directions_run</md-icon>
           <span class="md-list-item-text">Sair</span>
         </md-menu-item>
       </md-menu-content>

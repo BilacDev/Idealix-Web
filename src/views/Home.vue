@@ -48,8 +48,10 @@
           <label for="gender">Criança</label>
           <md-select name="kid" id="kid" v-model="newMarkForm.kid" :disabled="isSending">
             <md-option v-for="kid in kidsList" :key="kid.id" :value="kid.id">
-              <user-avatar :name="kid.name" :picture="kid.picture" size="md-small" />
-              {{ kid.name }}
+              <span>
+                <user-avatar :name="kid.name" :picture="kid.picture" size="md-small" />
+                {{ kid.name }}
+              </span>
             </md-option>
           </md-select>
         </md-field>
@@ -140,8 +142,8 @@ export default {
     width: 400px;
     padding: 8px;
     .md-dialog-title {padding: 24px 16px 16px; margin: 0;}
-    .md-dialog-actions {padding: 16px; margin: 0;}
     .md-menu.md-select {margin-left: 12px !important;}
+    .md-dialog-actions {padding: 16px;}
     &--form {padding: 0 16px}
   }
 }

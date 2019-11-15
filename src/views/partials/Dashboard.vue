@@ -109,6 +109,7 @@ export default {
   &__card-text {
     display: flex;
     flex-direction: column;
+    margin-left: 8px;
     span {
       font-size: 1.12em;
       &:first-of-type {
