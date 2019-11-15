@@ -6,14 +6,14 @@
         <span class="profileheader-component__dropdown-button--text">{{ mainNames }}</span>
         <md-icon class="profileheader-component__dropdown-button--text">arrow_drop_down</md-icon>
       </div>
-      <md-menu-content>
+      <md-menu-content class="profileheader-component__dropdown-list">
         <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/profile')">
           <md-icon class="profileheader-component__dropdown-item--icon">person</md-icon>
           <span class="md-list-item-text">Perfil</span>
         </md-menu-item>
         <md-divider/>
         <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/login')">
-          <md-icon class="profileheader-component__dropdown-item--icon">directions_run</md-icon>
+          <md-icon>directions_run</md-icon>
           <span class="md-list-item-text">Sair</span>
         </md-menu-item>
       </md-menu-content>
@@ -64,8 +64,8 @@ export default {
   &__dropdown-item {
     &--icon {margin-right: 8px !important;}
   }
-  &__avatar-icon {
-    margin-right: 8px;
+  &__dropdown-list {
+    .md-menu-content-container {border-radius: $--border-radius !important;}
   }
 }
 </style>
