@@ -98,7 +98,7 @@
 </template>
 
 <script>
-import SideMenu from '@/views/partials/SideMenu'
+import SideMenu from '@/components/SideMenu'
 import UserAvatar from '@/components/UserAvatar'
 import ProfileHeader from '@/components/ProfileHeader'
 

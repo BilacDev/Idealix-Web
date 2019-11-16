@@ -37,3 +37,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Adicionar sistema de recuperar senha (com pergunta secreta)
 - Login com google e facebook
 - Botão 'Como funciona'
+- Grafco padrao inicial (caso nao haja nenhuma criança)

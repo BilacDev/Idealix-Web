@@ -18,12 +18,12 @@ export default new Router({
         {
           name: 'dashboard',
           path: '/dashboard/:id',
-          component: () => import(/* webpackChunkName: "dashboard" */ '@/views/partials/Dashboard')
+          component: () => import(/* webpackChunkName: "dashboard" */ '@/views/sub/Dashboard')
         },
         {
           name: 'profile',
           path: '/profile',
-          component: () => import(/* webpackChunkName: "profile" */ '@/views/Profile')
+          component: () => import(/* webpackChunkName: "profile" */ '@/views/sub/Profile')
         }
       ]
     },

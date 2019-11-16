@@ -30,12 +30,12 @@ export default {
     kidsList () {
       return this.$store.state.kidsList || []
     }
-  },
+  }
 }
 </script>
 
 <style lang="scss">
-@import '../../styles/variables.scss';
+@import '../styles/variables.scss';
 
 .sidemenu-component {
   width: 300px;

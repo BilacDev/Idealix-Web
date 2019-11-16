@@ -16,7 +16,7 @@
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
-        <user-avatar icon="data_usage" size="md-large" class="dashboard-view__details-icon"/>
+        <user-avatar icon="bubble_chart" size="md-large" class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Ultimo marco</h2>
           <span>22,16Kg - 1,25m</span>
@@ -43,6 +43,7 @@ export default {
     name: 'Joãozinho Silva',
     age: '06',
     gender: 'Menino',
+    picture: '',
     // picture: 'https://placeimg.com/40/40/people/20',
     history: {}
   }),
