@@ -12,7 +12,7 @@
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kidsList" :key="kid.id" @click="goToKid(kid.id)">
+      <md-list-item v-for="kid in kidsList" :key="kid.id" :to="`/dashboard/${kid.id}`">
         <user-avatar :name="kid.name" :picture="kid.picture" />
         <span class="md-list-item-text">{{ kid.name }}</span>
       </md-list-item>
@@ -31,11 +31,6 @@ export default {
       return this.$store.state.kidsList || []
     }
   },
-  methods: {
-    goToKid (kidId) {
-      this.$router.push({ path: `/dashboard/${kidId}` })
-    }
-  }
 }
 </script>
 
