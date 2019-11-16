@@ -1,0 +1,13 @@
+// OVERRIDES
+a {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+.elevation {
+  box-shadow: 0 2px 8px 0 rgba(80,80,80,.16);
+}
+
+.router-link-active {
+  background-color: var(--md-theme-default-divider-on-background, rgba(0, 0, 0, 0.12));
+}
