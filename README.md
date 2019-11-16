@@ -38,3 +38,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Login com google e facebook
 - Botão 'Como funciona'
 - Grafco padrao inicial (caso nao haja nenhuma criança)
+- Marcasas e validações nos inputs

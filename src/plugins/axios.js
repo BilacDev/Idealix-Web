@@ -2,11 +2,9 @@ import Vue from 'vue'
 import axios from 'axios'
 import store from '@/store'
 
-const AUTH_TOKEN = localStorage.justoken
+const AUTH_TOKEN = localStorage.iDealixToken
 
-if (AUTH_TOKEN) {
-  axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
-}
+if (AUTH_TOKEN) axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
 
 let config = {
   baseURL: process.env.VUE_APP_BASE_URL || location.origin,
