@@ -12,7 +12,7 @@
           <span class="md-list-item-text">Perfil</span>
         </md-menu-item>
         <md-divider/>
-        <md-menu-item class="profileheader-component__dropdown-item" @click="$router.push('/login')">
+        <md-menu-item class="profileheader-component__dropdown-item" @click="this.$store.dispatch('logout');$router.push('/login')">
           <md-icon class="profileheader-component__dropdown-item--icon">directions_run</md-icon>
           <span class="md-list-item-text">Sair</span>
         </md-menu-item>

@@ -33,6 +33,9 @@ export default {
     validateLogin () {
 
     }
+  },
+  beforeMount () {
+    this.$store.dispatch('logout')
   }
 }
 </script>
