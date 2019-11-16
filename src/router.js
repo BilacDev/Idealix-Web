@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import Store from '@/store'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       name: 'home',
       path: '/',
       component: () => import(/* webpackChunkName: "home" */ '@/views/Home'),
+      meta: { requiresAuth: false },
       redirect: 'profile',
       children: [
         {
@@ -38,3 +40,17 @@ export default new Router({
     }
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth)
+
+  if (requiresAuth) {
+    if (Store.getters.isLoggedIn) {
+      next()
+    } else next('login')
+  }
+  else if (from.query.token) next(false)
+  else next()
+})
+
+export default router
