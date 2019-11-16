@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
 .dashboard-view {
   padding: 0px 20px 20px 20px;
@@ -107,11 +107,11 @@ export default {
     border-radius: $--border-radius;
     &:last-child {margin-right: 0px;}
     &:nth-child(1) .dashboard-view__details-icon {background-color: #621ba2;}
+    &:nth-child(2) .dashboard-view__details-icon {background-color: #d44eb7;}
+    &:nth-child(3) .dashboard-view__details-icon {background-color: #9f64ea;}
     // &:nth-child(1) .dashboard-view__details-icon {background-color: #4b62d6;}
     // &:nth-child(1) .dashboard-view__details-icon {background-color: #ffad31;}
-    &:nth-child(2) .dashboard-view__details-icon {background-color: #d44eb7;}
     // &:nth-child(2) .dashboard-view__details-icon {background-color: #3471e2;}
-    &:nth-child(3) .dashboard-view__details-icon {background-color: #9f64ea;}
     // &:nth-child(3) .dashboard-view__details-icon {background-color: #f7ae0a;}
     // &:nth-child(3) .dashboard-view__details-icon {background-color: #da3813;}
   }
