@@ -12,9 +12,9 @@
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
       <md-subheader>Crianças</md-subheader>
-      <md-list-item v-for="kid in kidsList" :key="kid.id" :to="`/dashboard/${kid.id}`">
-        <user-avatar :name="kid.name" :picture="kid.picture" />
-        <span class="md-list-item-text">{{ kid.name }}</span>
+      <md-list-item v-for="child in childsList" :key="child.id" :to="`/dashboard/${child.id}`">
+        <user-avatar :name="child.name" :picture="child.picture" />
+        <span class="md-list-item-text">{{ child.name }}</span>
       </md-list-item>
     </md-list>
   </div>
@@ -27,7 +27,7 @@ export default {
   name: 'SideMenu',
   components: { UserAvatar },
   computed: {
-    kidsList () {
+    childsList () {
       return this.$store.state.kidsList || []
     }
   }

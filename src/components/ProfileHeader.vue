@@ -29,7 +29,7 @@ export default {
   components: { UserAvatar },
   computed: {
     userInfo () {
-      return this.$store.state.userInfo
+      return this.$store.state.accountModule
     },
     mainNames () {
       let fullName = this.userInfo.name.split(' ')
