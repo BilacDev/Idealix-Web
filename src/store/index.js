@@ -1,17 +1,13 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import accountModule from './modules/account'
-import kidModule from './modules/kid'
+import childsModule from './modules/childs'
+import historyModule from './modules/history'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userInfo: {
-      id: 1,
-      name: 'Guilherme Rios da Cunha',
-      picture: 'https://placeimg.com/40/40/people/10'
-    },
     kidsList: [
       {
         id: 1,
@@ -61,6 +57,7 @@ export default new Vuex.Store({
   },
   modules: {
     accountModule,
-    kidModule
+    childsModule,
+    historyModule
   }
 })

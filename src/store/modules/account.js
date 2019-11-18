@@ -2,10 +2,10 @@ import router from '@/router'
 
 const account = {
   state: {
-    id: '',
-    name: '',
-    email: '',
-    picture: '',
+    id: 1,
+    name: 'Guilherme Rios da Cunha',
+    email: 'guilherme.rc.98@gmil.com',
+    picture: 'https://placeimg.com/40/40/people/10',
     token: localStorage.getItem('iDealixToken') || ''
   },
   getters: {
@@ -33,7 +33,7 @@ const account = {
       delete axios.defaults.headers.common['Authorization']
       return new Promise((resolve, reject) => {
         // eslint-disable-next-line
-        axios.post('api/accounts/token', credentials)
+        axios.post('api/account/token', credentials)
           .then(response => {
             const token = response.data.token
             // eslint-disable-next-line
@@ -46,6 +46,18 @@ const account = {
             reject(error)
           })
       })
+    },
+    editProfile ({ commit }, profileData) {
+      // return new Promise((resolve, reject) => {
+      //   // eslint-disable-next-line
+      //   axios.post('api/', profileData)
+      //     .then(response => {
+      //       resolve(response)
+      //     })
+      //     .catch(error => {
+      //       reject(error)
+      //     })
+      // })
     }
   }
 }
