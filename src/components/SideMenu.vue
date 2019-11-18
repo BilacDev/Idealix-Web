@@ -3,7 +3,7 @@
     <h1>iDealix</h1>
     <md-list class="sidemenu-component__menu-items">
       <md-subheader>Opções</md-subheader>
-      <md-list-item @click="$emit('addKidDialogVisable')">
+      <md-list-item @click="$emit('addChildDialogVisable')">
         <md-icon>face</md-icon>
         <span class="md-list-item-text">Adicionar Criança</span>
       </md-list-item>
@@ -28,7 +28,7 @@ export default {
   components: { UserAvatar },
   computed: {
     childsList () {
-      return this.$store.state.kidsList || []
+      return this.$store.state.childsModule.childsList || []
     }
   }
 }

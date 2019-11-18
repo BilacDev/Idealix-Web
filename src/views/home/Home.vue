@@ -1,9 +1,9 @@
 <template>
   <div class="main-container">
     <side-menu
-      @addKidDialogVisable="addKidDialogVisibel = true"
+      @addChildDialogVisable="addChildDialogVisibel = true"
       @addPointDialogVisable="addPointDialogVisibel = true"
-      :kidsList="kidsList"
+      :childsList="childsList"
     />
     <main class="main-container__content">
       <profile-header />
@@ -12,18 +12,18 @@
       </transition>
     </main>
 
-    <md-dialog :md-active.sync="addKidDialogVisibel" class="main-container__dialogs">
+    <md-dialog :md-active.sync="addChildDialogVisibel" class="main-container__dialogs">
       <md-dialog-title>Adicionar uma criança</md-dialog-title>
       <form novalidate @submit.prevent="validateUser" class="main-container__dialogs--form">
         <md-field>
           <md-icon>mood</md-icon>
           <label for="name">Nome</label>
-          <md-input name="name" id="name" v-model="newKidForm.name" :disabled="isSending" />
+          <md-input name="name" id="name" v-model="newChildForm.name" :disabled="isSending" />
         </md-field>
         <md-field>
           <md-icon>wc</md-icon>
           <label for="gender">Genero</label>
-          <md-select name="gender" id="gender" v-model="newKidForm.gender" :disabled="isSending">
+          <md-select name="gender" id="gender" v-model="newChildForm.gender" :disabled="isSending">
             <md-option value="m">É um Menino</md-option>
             <md-option value="f">É uma Menina</md-option>
           </md-select>
@@ -31,11 +31,11 @@
         <md-field>
           <md-icon>today</md-icon>
           <label for="gender">Data de nascimento</label>
-          <md-input name="birthday" id="birthday" v-model="newKidForm.birthday" :disabled="isSending" />
+          <md-input name="birthday" id="birthday" v-model="newChildForm.birthday" :disabled="isSending" />
         </md-field>
       </form>
       <md-dialog-actions>
-        <md-button class="md-primary" @click="addKidDialogVisibel = false" :disabled="isSending">Cancelar</md-button>
+        <md-button class="md-primary" @click="addChildDialogVisibel = false" :disabled="isSending">Cancelar</md-button>
         <md-button class="md-primary md-raised" @click="addPintDialogVisibel = false" :disabled="isSending">Adicionar</md-button>
       </md-dialog-actions>
     </md-dialog>
@@ -46,11 +46,11 @@
         <md-field>
           <md-icon>mood</md-icon>
           <label for="gender">Criança</label>
-          <md-select name="kid" id="kid" v-model="newMarkForm.kid" :disabled="isSending">
-            <md-option v-for="kid in kidsList" :key="kid.id" :value="kid.id">
+          <md-select name="child" id="child" v-model="newPointForm.child" :disabled="isSending">
+            <md-option v-for="child in childsList" :key="child.id" :value="child.id">
               <span>
-                <user-avatar :name="kid.name" :picture="kid.picture" size="md-small" />
-                {{ kid.name }}
+                <user-avatar :name="child.name" :picture="child.picture" size="md-small" />
+                {{ child.name }}
               </span>
             </md-option>
           </md-select>
@@ -58,19 +58,19 @@
         <md-field>
           <md-icon>360</md-icon>
           <label for="weight">Peso</label>
-          <md-input name="weight" id="weight" v-model="newMarkForm.weight" :disabled="isSending" />
+          <md-input name="weight" id="weight" v-model="newPointForm.weight" :disabled="isSending" />
           <span class="md-suffix">Kg</span>
         </md-field>
         <md-field>
           <md-icon>height</md-icon>
           <label for="height">Altura</label>
-          <md-input name="height" id="height" v-model="newMarkForm.height" :disabled="isSending" />
+          <md-input name="height" id="height" v-model="newPointForm.height" :disabled="isSending" />
           <span class="md-suffix">m</span>
         </md-field>
         <md-field>
           <md-icon>today</md-icon>
           <label for="height">Data da medição</label>
-          <md-input name="madkday" id="madkday" v-model="newMarkForm.madkday" :disabled="isSending" />
+          <md-input name="madkday" id="madkday" v-model="newPointForm.madkday" :disabled="isSending" />
         </md-field>
       </form>
       <md-dialog-actions>
@@ -84,7 +84,7 @@
         <md-icon>add</md-icon>
       </md-speed-dial-target>
       <md-speed-dial-content>
-        <md-button class="md-icon-button" @click="addKidDialogVisibel = true">
+        <md-button class="md-icon-button" @click="addChildDialogVisibel = true">
           <md-icon>face</md-icon>
           <md-tooltip md-direction="left">Adicionar Criança</md-tooltip>
         </md-button>
@@ -111,15 +111,23 @@ export default {
   },
   data: () => ({
     isSending: false,
-    addKidDialogVisibel: false,
+    addChildDialogVisibel: false,
     addPointDialogVisibel: false,
-    newKidForm: {},
-    newMarkForm: {}
+    newChildForm: {},
+    newPointForm: {}
   }),
   computed: {
-    kidsList () {
-      return this.$store.state.kidsList
+    childsList () {
+      return this.$store.state.childsModule.childsList
     }
+  },
+  beforeMount () {
+    this.$store.dispatch('getChilds', responsableId)
+      .then(response => {
+      })
+      .catch(error => {
+        console.error(error)
+      })
   }
 }
 </script>
