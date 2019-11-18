@@ -10,11 +10,11 @@ const history = {
   },
   mutations: {
     clearHistory (state) {
-      state.id: '',
-      state.name: '',
-      state.picture: '',
-      state.gender: '',
-      state.age: ''
+      state.id = '',
+      state.name = '',
+      state.picture = '',
+      state.gender = '',
+      state.age = ''
     }
   },
   actions: {
