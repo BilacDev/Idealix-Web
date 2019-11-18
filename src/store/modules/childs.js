@@ -1,12 +1,35 @@
 const childs = {
   state: {
-    childsList: {}
+    childsList: [
+      {
+        id: 1,
+        name: 'Abbey Christansens',
+        picture: 'https://placeimg.com/40/40/people/1'
+      },
+      {
+        id: 2,
+        name: 'Alex Nelson',
+        picture: ''
+      },
+      {
+        id: 3,
+        name: 'Mary Johnson',
+        picture: 'https://placeimg.com/40/40/people/2'
+      },
+      {
+        id: 4,
+        name: 'Mamyugas Pieroi',
+        picture: 'https://placeimg.com/40/40/people/3'
+      }
+    ]
   },
   getters: {
 
   },
   mutations: {
-
+    clearChilds (state) {
+      state.childsList = []
+    }
   },
   actions: {
     addChild ({ commit }, newChild) {
@@ -34,16 +57,16 @@ const childs = {
       // })
     },
     getChilds ({ commit }, responsableId) {
-      // return new Promise((resolve, reject) => {
-      //   // eslint-disable-next-line
-      //   axios.get('api/childs/' + responsableId)
-      //     .then(response => {
-      //       resolve(response)
-      //     })
-      //     .catch(error => {
-      //       reject(error)
-      //     })
-      // })
+      return new Promise((resolve, reject) => {
+        // eslint-disable-next-line
+        axios.get('/child/')
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            reject(error)
+          })
+      })
     }
   }
 }

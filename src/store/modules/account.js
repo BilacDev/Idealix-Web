@@ -23,6 +23,8 @@ const account = {
   actions: {
     logout ({ commit }, options) {
       commit('logout')
+      commit('clearChilds')
+      commit('clearHistory')
       localStorage.removeItem('iDealixToken')
       // eslint-disable-next-line
       delete axios.defaults.headers.common['Authorization']
