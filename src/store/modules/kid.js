@@ -1,12 +1,10 @@
-import router from '@/router'
-
-const account = {
+const kid = {
   state: {
     id: '',
     name: '',
     picture: '',
     gender: '',
-    age: '',
+    age: ''
   },
   getters: {
   },
