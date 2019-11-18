@@ -26,8 +26,7 @@ const account = {
       localStorage.removeItem('iDealixToken')
       // eslint-disable-next-line
       delete axios.defaults.headers.common['Authorization']
-      if (options && options.redirect === false) {
-      } else router.push('/login')
+      if (options && options.redirect === false) {} else router.push('/login')
     },
     login ({ commit }, credentials) {
       // eslint-disable-next-line

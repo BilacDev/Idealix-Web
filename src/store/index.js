@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import accountModule from './modules/account'
+import kidModule from './modules/kid'
 
 Vue.use(Vuex)
 
@@ -59,6 +60,7 @@ export default new Vuex.Store({
 
   },
   modules: {
-    accountModule
+    accountModule,
+    kidModule
   }
 })
