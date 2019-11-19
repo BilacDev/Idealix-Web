@@ -15,7 +15,10 @@
 
 <script>
 export default {
-  name: 'Terms'
+  name: 'Terms',
+  beforeMount () {
+    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
+  }
 }
 </script>
 

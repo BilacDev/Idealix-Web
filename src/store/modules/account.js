@@ -9,7 +9,8 @@ const account = {
     token: localStorage.getItem('iDealixToken') || ''
   },
   getters: {
-    isLoggedIn: state => !!state.token
+    isLoggedIn: state => !!state.token,
+    responsableData: state => state
   },
   mutations: {
     logout (state) {
@@ -18,6 +19,15 @@ const account = {
       state.email = ''
       state.picture = ''
       state.token = ''
+    },
+    login (state, credentials) {
+      state.id = credentials.id
+      state.name = credentials.name
+      state.email = credentials.email
+      state.picture = credentials.picture
+    },
+    setToken (state, token) {
+      state.totken = token
     }
   },
   actions: {
@@ -30,24 +40,40 @@ const account = {
       delete axios.defaults.headers.common['Authorization']
       if (options && options.redirect === false) {} else router.push('/login')
     },
-    login ({ commit }, credentials) {
+    login ({ commit }, loginForm) {
       // eslint-disable-next-line
       delete axios.defaults.headers.common['Authorization']
       return new Promise((resolve, reject) => {
         // eslint-disable-next-line
-        axios.post('api/account/token', credentials)
+        axios.post('api/account/token', loginForm)
           .then(response => {
             const token = response.data.token
             // eslint-disable-next-line
             axios.defaults.headers.common['Authorization'] = token
-            localStorage.setItem('iDealixToken', token)
+            if (loginForm.remember) localStorage.setItem('iDealixToken', token)
+            else commit('setToke', token)
+            commit('login', response.data)
             resolve(response)
           })
           .catch(error => {
             localStorage.removeItem('iDealixToken')
+            commit('logout')
+            console.error(error)
             reject(error)
           })
       })
+    },
+    register ({ commit }, registerForm) {
+      // return new Promise ((resolve, reject) => {
+      //   // eslint-disable-next-line
+      //   axios.post('api/', registerForm)
+      //     .then(response => {
+      //       resolve(response)
+      //     })
+      //     .catch(error => {
+      //       reject(error)
+      //     })
+      // })
     },
     editProfile ({ commit }, profileData) {
       // return new Promise((resolve, reject) => {

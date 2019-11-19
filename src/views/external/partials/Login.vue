@@ -23,19 +23,29 @@ export default {
   data: () => ({
     loginForm: {
       email: '',
-      password: ''
+      password: '',
+      isRemember: false
     },
     formRules: {},
-    isRemember: false,
     isSending: false
   }),
   methods: {
-    validateLogin () {
+    doLogin () {
+      this.isSending = true
+      this.$store.dispatch('login', this.loginForm)
+        .then(() => {
 
+        })
+        .catch(error => {
+          console.error(error)
+        })
+        .finally(() => {
+          this.isSending = false
+        })
     }
   },
   beforeMount () {
-    this.$store.dispatch('logout')
+    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
   }
 }
 </script>

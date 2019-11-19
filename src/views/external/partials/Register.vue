@@ -36,8 +36,21 @@ export default {
   }),
   methods: {
     createAccount () {
+      this.isSending = true
+      this.$store.dispatch('register', this.registerForm)
+        .then(() => {
 
+        })
+        .catch(error => {
+          console.error(error)
+        })
+        .finally(() => {
+          this.isSending = false
+        })
     }
+  },
+  beforeMount () {
+    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
   }
 }
 </script>
