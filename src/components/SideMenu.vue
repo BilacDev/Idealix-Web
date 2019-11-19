@@ -26,9 +26,11 @@ import UserAvatar from '@/components/UserAvatar'
 export default {
   name: 'SideMenu',
   components: { UserAvatar },
-  computed: {
-    childsList () {
-      return this.$store.state.childsModule.childsList || []
+  props: {
+    childsList: {
+      type: Array,
+      required: true,
+      default: () => []
     }
   }
 }

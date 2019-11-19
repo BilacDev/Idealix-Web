@@ -24,7 +24,7 @@ const childs = {
     ]
   },
   getters: {
-
+    childsList: state => state.childsList
   },
   mutations: {
     clearChilds (state) {
@@ -59,11 +59,12 @@ const childs = {
     getChilds ({ commit }, responsableId) {
       return new Promise((resolve, reject) => {
         // eslint-disable-next-line
-        axios.get('/child/')
+        axios.get('api/childs/', responsableId)
           .then(response => {
             resolve(response)
           })
           .catch(error => {
+            console.error(error)
             reject(error)
           })
       })
