@@ -62,10 +62,12 @@ const router = new Router({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (Store.getters.isLoggedIn) next()
-    else next('login')
-  } else if (from.query.token) next(false)
-  else next()
+    Store.getters.isLoggedIn ? next() : next('login')
+  } else if (from.query.token) {
+    next(false)
+  } else {
+    next()
+  }
 })
 
 export default router

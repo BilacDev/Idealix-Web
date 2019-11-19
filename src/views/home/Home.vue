@@ -117,13 +117,17 @@ export default {
     newPointForm: {}
   }),
   computed: {
+    responsableId () {
+      return this.$store.getters.responsableData.id
+    },
     childsList () {
-      return this.$store.state.childsModule.childsList
+      return this.$store.getters.childsList
     }
   },
   beforeMount () {
-    this.$store.dispatch('getChilds', responsableId)
-      .then(response => {
+    this.$store.dispatch('getChilds', this.responsableId)
+      .then(() => {
+
       })
       .catch(error => {
         console.error(error)
