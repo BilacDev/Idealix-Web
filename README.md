@@ -39,3 +39,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 - Botão 'Como funciona'
 - Grafco padrao inicial (caso nao haja nenhuma criança)
 - Marcasas e validações nos inputs
+- componente notificação de erro
