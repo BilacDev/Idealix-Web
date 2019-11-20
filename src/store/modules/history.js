@@ -6,7 +6,7 @@ const history = {
       gender: 'Menino',
       age: '6',
       picture: '',
-      status: 'Saldavel',
+      status: 'Saudável',
       height: '1,20m',
       weight: '45,2kg'
     },

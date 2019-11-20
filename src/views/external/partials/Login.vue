@@ -10,8 +10,8 @@
       <md-input type="password" name="password" id="password" v-model="loginForm.password" :disabled="isSending" />
     </md-field>
     <div class="login-view__submit">
-      <md-checkbox v-model="isRemember" class="md-raised md-primary" :disabled="isSending">Lembre-se de mim</md-checkbox>
-      <md-button class="md-raised md-primary" @click="validateLogin" :disabled="isSending">Entrar</md-button>
+      <md-checkbox v-model="loginForm.isRemember" class="md-raised md-primary" :disabled="isSending">Lembre-se de mim</md-checkbox>
+      <md-button class="md-raised md-primary" @click="doLogin" :disabled="isSending">Entrar</md-button>
     </div>
     <span class="login-view__switch">Não possui uma conta? <router-link to="/register">Cadastre-se agora mesmo</router-link></span>
   </form>

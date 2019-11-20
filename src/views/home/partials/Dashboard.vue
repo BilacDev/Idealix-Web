@@ -78,17 +78,19 @@ export default {
   },
   created () {
     this.history = {
-      labels: ['1', '2', '3', '4'],
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
       datasets: [
         {
-          label: 'Data One',
-          backgroundColor: '#f87979',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+          label: 'Ideal',
+          // backgroundColor: '#f87979',
+          backgroundColor: '#9f64eac9',
+          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         },
         {
-          label: 'Data One',
-          backgroundColor: '#f87979',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
+          label: 'Atual',
+          // backgroundColor: '#487fe2',
+          backgroundColor: '#d44eb7c9',
+          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         }
       ]
     }
