@@ -132,6 +132,9 @@ export default {
       .catch(error => {
         console.error(error)
       })
+  },
+  methods: {
+
   }
 }
 </script>

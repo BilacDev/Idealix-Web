@@ -29,6 +29,9 @@ export default {
     formRules: {},
     isSending: false
   }),
+  beforeMount () {
+    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
+  },
   methods: {
     doLogin () {
       this.isSending = true
@@ -43,9 +46,6 @@ export default {
           this.isSending = false
         })
     }
-  },
-  beforeMount () {
-    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
   }
 }
 </script>

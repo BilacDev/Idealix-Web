@@ -27,6 +27,9 @@ export default {
       }
     }
   },
+  beforeMount () {
+    this.userInfo = this.userInfo
+  },
   methods: {
     editProfile () {
       this.$store.dispatch('editProfile', this.profileData)
@@ -37,9 +40,6 @@ export default {
           console.error(error)
         })
     }
-  },
-  mounted () {
-    this.userInfo = this.userInfo
   }
 }
 </script>

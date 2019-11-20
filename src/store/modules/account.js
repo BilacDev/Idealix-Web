@@ -28,7 +28,7 @@ const account = {
       state.email = credentials.email
       state.picture = credentials.picture
     },
-    setToken (state, token) {
+    token (state, token) {
       state.totken = token
     }
   },
@@ -53,7 +53,7 @@ const account = {
             // eslint-disable-next-line
             axios.defaults.headers.common['Authorization'] = token
             if (loginForm.remember) localStorage.setItem('iDealixToken', token)
-            else commit('setToke', token)
+            else commit('token', token)
             commit('login', response.data)
             resolve(response)
           })

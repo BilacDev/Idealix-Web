@@ -32,6 +32,19 @@ const childs = {
     }
   },
   actions: {
+    getChilds ({ commit }, responsableId) {
+      return new Promise((resolve, reject) => {
+        // eslint-disable-next-line
+        axios.get('api/childs/', responsableId)
+          .then(response => {
+            resolve(response)
+          })
+          .catch(error => {
+            console.error(error)
+            reject(error)
+          })
+      })
+    },
     addChild ({ commit }, newChild) {
       // return new Promise((resolve, reject) => {
       //   // eslint-disable-next-line
@@ -55,19 +68,6 @@ const childs = {
       //       reject(error)
       //     })
       // })
-    },
-    getChilds ({ commit }, responsableId) {
-      return new Promise((resolve, reject) => {
-        // eslint-disable-next-line
-        axios.get('api/childs/', responsableId)
-          .then(response => {
-            resolve(response)
-          })
-          .catch(error => {
-            console.error(error)
-            reject(error)
-          })
-      })
     }
   }
 }

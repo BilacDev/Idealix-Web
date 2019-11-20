@@ -9,11 +9,10 @@ export default {
       return this.kidHistory
     },
     options () {
-      const opts = {
+      return {
         responsive: true,
         maintainAspectRatio: false
       }
-      return opts
     }
   },
   beforeMount () {
