@@ -67,7 +67,7 @@ export default {
     }
   },
   beforeCreate () {
-    let childId = this.$router.params.id
+    let childId = this.$route.params.id
     this.$store.dispatch('getChild', childId)
       .then(() => {
 

@@ -118,7 +118,7 @@ export default {
   }),
   computed: {
     responsableId () {
-      return this.$store.getters.responsableData.id
+      return this.$store.getters.responsableInfo.id
     },
     childsList () {
       return this.$store.getters.childsList
