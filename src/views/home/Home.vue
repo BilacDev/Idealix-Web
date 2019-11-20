@@ -101,6 +101,7 @@
 import SideMenu from '@/components/SideMenu'
 import UserAvatar from '@/components/UserAvatar'
 import ProfileHeader from '@/components/ProfileHeader'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
@@ -117,12 +118,16 @@ export default {
     newPointForm: {}
   }),
   computed: {
-    responsableId () {
-      return this.$store.getters.responsableData.id
-    },
-    childsList () {
-      return this.$store.getters.childsList
-    }
+    ...mapGetters({
+      childsList: 'childsList',
+      responsableData: 'responsableData'
+    })
+    // responsableId () {
+    //   return this.$store.getters.responsableData.id
+    // },
+    // childsList () {
+    //   return this.$store.getters.childsList
+    // }
   },
   beforeMount () {
     this.$store.dispatch('getChilds', this.responsableId)
