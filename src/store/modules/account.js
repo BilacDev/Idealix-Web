@@ -2,15 +2,17 @@ import router from '@/router'
 
 const account = {
   state: {
-    id: 1,
-    name: 'Guilherme Rios da Cunha',
-    email: 'guilherme.rc.98@gmil.com',
-    picture: 'https://placeimg.com/40/40/people/10',
+    info: {
+      id: 1,
+      name: 'Guilherme Rios da Cunha',
+      email: 'guilherme.rc.98@gmil.com',
+      picture: 'https://placeimg.com/40/40/people/10'
+    },
     token: localStorage.getItem('iDealixToken') || ''
   },
   getters: {
     isLoggedIn: state => !!state.token,
-    responsableData: state => state
+    responsableData: state => state.info
   },
   mutations: {
     logout (state) {
