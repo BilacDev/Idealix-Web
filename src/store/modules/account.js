@@ -12,21 +12,21 @@ const account = {
   },
   getters: {
     isLoggedIn: state => !!state.token,
-    responsableData: state => state.info
+    responsableInfo: state => state.info
   },
   mutations: {
     logout (state) {
-      state.id = ''
-      state.name = ''
-      state.email = ''
-      state.picture = ''
-      state.token = ''
+      state.info.id = ''
+      state.info.name = ''
+      state.info.email = ''
+      state.info.picture = ''
+      state.info.token = ''
     },
     login (state, credentials) {
-      state.id = credentials.id
-      state.name = credentials.name
-      state.email = credentials.email
-      state.picture = credentials.picture
+      state.info.id = credentials.id
+      state.info.name = credentials.name
+      state.info.email = credentials.email
+      state.info.picture = credentials.picture
     },
     token (state, token) {
       state.totken = token

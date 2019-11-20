@@ -2,24 +2,24 @@
   <div class="dashboard-view">
     <div class="dashboard-view__triple">
       <md-card class="dashboard-view__details-card elevation">
-        <user-avatar :name="name" :picture="picture" size="md-large" class="dashboard-view__details-icon" />
+        <user-avatar :name="childInfo.name" :picture="childInfo.picture" size="md-large" class="dashboard-view__details-icon" />
         <div class="dashboard-view__details-text">
-          <h2>{{ name }}</h2>
-          <span>{{ age }} Anos - {{ gender }}</span>
+          <h2>{{ childInfo.name }}</h2>
+          <span>{{ childInfo.age }} Anos - {{ childInfo.gender }}</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
         <user-avatar icon="favorite" size="md-large" class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Status Atual</h2>
-          <span>Saldavel</span>
+          <span>{{ childInfo.status }}</span>
         </div>
       </md-card>
       <md-card class="dashboard-view__details-card elevation">
         <user-avatar icon="bubble_chart" size="md-large" class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Ultimo marco</h2>
-          <span>22,16Kg - 1,25m</span>
+          <span>{{ childInfo.height }} - {{ childInfo.weight }}</span>
         </div>
       </md-card>
     </div>
@@ -40,16 +40,22 @@ export default {
     HistoryChart
   },
   data: () => ({
-    name: 'Joãozinho Silva',
-    age: '06',
-    gender: 'Menino',
-    picture: '',
-    // picture: 'https://placeimg.com/40/40/people/20',
-    history: {}
+    editChildForm: {
+      name: '',
+      gender: '',
+      age: '',
+      picture: ''
+    }
   }),
   computed: {
+    childInfo () {
+      return this.$store.getters.childInfo
+    },
+    childHistory () {
+      return this.$store.getters.childHistory
+    },
     chartStyles () {
-      const styles = {
+      return {
         flex: 1,
         display: 'flex',
         position: 'relative',
@@ -58,8 +64,17 @@ export default {
         maxHeight: '100%',
         maxWidth: '100%'
       }
-      return styles
     }
+  },
+  beforeCreate () {
+    let childId = this.$router.params.id
+    this.$store.dispatch('getChild', childId)
+      .then(() => {
+
+      })
+      .catch(error => {
+        console.error(error)
+      })
   },
   created () {
     this.history = {

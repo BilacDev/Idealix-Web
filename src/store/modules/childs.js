@@ -1,6 +1,6 @@
 const childs = {
   state: {
-    childsList: [
+    list: [
       {
         id: 1,
         name: 'Abbey Christansens',
@@ -24,11 +24,14 @@ const childs = {
     ]
   },
   getters: {
-    childsList: state => state.childsList
+    childsList: state => state.list
   },
   mutations: {
     clearChilds (state) {
-      state.childsList = []
+      state.list = []
+    },
+    setChilds (state, childsList) {
+      state.list = childsList
     }
   },
   actions: {
@@ -37,6 +40,7 @@ const childs = {
         // eslint-disable-next-line
         axios.get('api/childs/', responsableId)
           .then(response => {
+            commit('setChilds', response.data)
             resolve(response)
           })
           .catch(error => {
@@ -48,7 +52,7 @@ const childs = {
     addChild ({ commit }, newChild) {
       // return new Promise((resolve, reject) => {
       //   // eslint-disable-next-line
-      //   axios.post('api/', newChild)
+      //   axios.post('api/childs/', newChild)
       //     .then(response => {
       //       resolve(response)
       //     })
