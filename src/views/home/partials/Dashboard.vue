@@ -82,14 +82,14 @@ export default {
       datasets: [
         {
           label: 'Ideal',
-          // backgroundColor: '#f87979',
-          backgroundColor: '#9f64eac9',
+          // backgroundColor: '#f87979c6',
+          backgroundColor: '#9f64eac6',
           data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         },
         {
           label: 'Atual',
-          // backgroundColor: '#487fe2',
-          backgroundColor: '#d44eb7c9',
+          // backgroundColor: '#487fe2c6',
+          backgroundColor: '#d44eb7c6',
           data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         }
       ]

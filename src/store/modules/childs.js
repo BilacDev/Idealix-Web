@@ -18,7 +18,7 @@ const childs = {
       },
       {
         id: 4,
-        name: 'Mamyugas Pieroi',
+        name: 'Sandra Adams',
         picture: 'https://placeimg.com/40/40/people/3'
       }
     ]
