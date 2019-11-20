@@ -70,7 +70,7 @@
         <md-field>
           <md-icon>today</md-icon>
           <label for="height">Data da medição</label>
-          <md-input name="madkday" id="madkday" v-model="newPointForm.madkday" :disabled="isSending" />
+          <md-input name="madkday" id="madkday" v-model="newPointForm.pointday" :disabled="isSending" />
         </md-field>
       </form>
       <md-dialog-actions>
@@ -101,7 +101,6 @@
 import SideMenu from '@/components/SideMenu'
 import UserAvatar from '@/components/UserAvatar'
 import ProfileHeader from '@/components/ProfileHeader'
-import { mapGetters } from 'vuex'
 
 export default {
   name: 'Home',
@@ -118,16 +117,12 @@ export default {
     newPointForm: {}
   }),
   computed: {
-    ...mapGetters({
-      childsList: 'childsList',
-      responsableData: 'responsableData'
-    })
-    // responsableId () {
-    //   return this.$store.getters.responsableData.id
-    // },
-    // childsList () {
-    //   return this.$store.getters.childsList
-    // }
+    responsableId () {
+      return this.$store.getters.responsableData.id
+    },
+    childsList () {
+      return this.$store.getters.childsList
+    }
   },
   beforeMount () {
     this.$store.dispatch('getChilds', this.responsableId)
