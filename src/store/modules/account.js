@@ -19,14 +19,12 @@ const account = {
       state.info.id = ''
       state.info.name = ''
       state.info.email = ''
-      state.info.picture = ''
       state.info.token = ''
     },
     login (state, credentials) {
       state.info.id = credentials.id
       state.info.name = credentials.name
       state.info.email = credentials.email
-      state.info.picture = credentials.picture
     },
     token (state, token) {
       state.totken = token
@@ -42,6 +40,7 @@ const account = {
       delete axios.defaults.headers.common['Authorization']
       if (options && options.redirect === false) {} else router.push('/login')
     },
+
     login ({ commit }, loginForm) {
       // eslint-disable-next-line
       delete axios.defaults.headers.common['Authorization']
@@ -64,30 +63,6 @@ const account = {
             reject(error)
           })
       })
-    },
-    register ({ commit }, registerForm) {
-      // return new Promise ((resolve, reject) => {
-      //   // eslint-disable-next-line
-      //   axios.post('api/', registerForm)
-      //     .then(response => {
-      //       resolve(response)
-      //     })
-      //     .catch(error => {
-      //       reject(error)
-      //     })
-      // })
-    },
-    editProfile ({ commit }, profileData) {
-      // return new Promise((resolve, reject) => {
-      //   // eslint-disable-next-line
-      //   axios.post('api/', profileData)
-      //     .then(response => {
-      //       resolve(response)
-      //     })
-      //     .catch(error => {
-      //       reject(error)
-      //     })
-      // })
     }
   }
 }

@@ -8,30 +8,21 @@ const router = new Router({
   routes: [
     {
       name: 'home',
-      path: '/home',
+      path: '/',
       component: () => import(/* webpackChunkName: "home" */ '@/views/home/Home'),
       meta: { requiresAuth: false },
-      redirect: 'profile',
+      redirect: 'dashboard',
       children: [
-        {
-          path: '/dashboard',
-          redirect: 'profile'
-        },
         {
           name: 'dashboard',
           path: '/dashboard/:id',
           component: () => import(/* webpackChunkName: "dashboard" */ '@/views/home/partials/Dashboard')
-        },
-        {
-          name: 'profile',
-          path: '/profile',
-          component: () => import(/* webpackChunkName: "profile" */ '@/views/home/partials/Profile')
         }
       ]
     },
     {
       name: 'external',
-      path: '/',
+      path: '/external',
       component: () => import(/* webpackChunkName: "external" */ '@/views/external/External'),
       meta: { requiresAuth: false },
       redirect: 'login',

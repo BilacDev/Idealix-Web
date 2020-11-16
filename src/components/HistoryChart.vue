@@ -5,9 +5,6 @@ export default {
   extends: Line,
   props: ['kidHistory'],
   computed: {
-    chartData () {
-      return this.kidHistory
-    },
     options () {
       return {
         responsive: true,
@@ -15,11 +12,8 @@ export default {
       }
     }
   },
-  beforeMount () {
-
-  },
   mounted () {
-    this.renderChart(this.chartData, this.options)
+    this.renderChart(this.kidHistory, this.options)
   }
 }
 </script>

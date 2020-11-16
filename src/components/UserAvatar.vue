@@ -1,6 +1,11 @@
 <template>
-  <md-avatar class="useravatar-component" :class="size">
-    <img v-if="picture" :src="picture" alt="People">
+  <md-avatar
+    :class="size"
+    class="useravatar-component">
+    <img
+      v-if="picture"
+      :src="picture"
+      alt="People">
     <md-icon v-else-if="icon">{{ icon }}</md-icon>
     <span v-else>{{ nameInitials }}</span>
   </md-avatar>
@@ -48,8 +53,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../styles/variables.scss';
-
 .useravatar-component {
   margin-right: 8px;
   margin-left: 0px;

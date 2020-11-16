@@ -7,9 +7,11 @@ import '@/plugins/axios'
 
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
-// import 'vue-material/dist/theme/default.css'
 
 import './styles/main.scss'
+
+import UserAvatar from '@/components/UserAvatar'
+Vue.component('UserAvatar', UserAvatar)
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)

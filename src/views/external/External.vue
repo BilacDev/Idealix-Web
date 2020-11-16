@@ -1,9 +1,10 @@
 <template>
   <div class="external-view">
-    <div class="external-view__logo elevation">
-      <h1>iDealix</h1>
+    <div class="external-view__container-logo elevation">
+      <h1 class="external-view__logo">iDealix</h1>
     </div>
-    <main class="external-view__container">
+
+    <main class="external-view__container-form">
       <transition name="fade">
         <router-view class="external-view__content"/>
       </transition>
@@ -13,7 +14,10 @@
 
 <script>
 export default {
-  name: 'External'
+  name: 'External',
+  beforeMount () {
+    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
+  }
 }
 </script>
 
@@ -24,11 +28,14 @@ export default {
   width: 100vw;
   height: 100vh;
   display: flex;
-  &__logo {
+  background-color: $--background;
+
+  .external-view__container-logo {
     width: 50%;
     height: 100%;
     background: linear-gradient(to right bottom, $--primary-color, $--secondary-color);
-    h1 {
+
+    .external-view__logo {
       height: 24px;
       display: flex;
       align-items: center;
@@ -37,16 +44,34 @@ export default {
       font-weight: 400;
     }
   }
-  &__container {
+
+  .external-view__container-form {
     width: 50%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    h1 {margin-bottom: 40px;}
-  }
-  &__content {
-    width: 400px;
+
+    .external-view__content {
+      width: 400px;
+
+      .external-view__title {
+        margin-bottom: 40px
+      }
+
+      .external-view__submit {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .md-button { margin: 0; }
+      }
+
+      .external-view__switch-link {
+        display: block;
+        text-align: center;
+        margin-top: 40px;
+      }
+    }
   }
 }
 </style>
