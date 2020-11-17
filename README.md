@@ -8,12 +8,7 @@ Idealix é um projeto desenvolvido por estudantes do Sexto Periodo da Faculdade 
 - **Compiles For Production:** `npm run build`
 
 ### Debito Técnico
-- Internacionalização
 - Versão para Celular
-- Edição de Criança
-- Página e Edição de Perfil
-- Upload de Imagem para Crianças e Perfil
-- Recuperação de Senha com Pergunta Secreta
 - Login com Google e com Facebook
 - Botão 'Como funciona'
 - Grafco Padrao Exemplar Inicial
