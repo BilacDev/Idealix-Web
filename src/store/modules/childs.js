@@ -1,77 +1,32 @@
+import axiosDispatch from '../axiosDispatch'
+
+const childsPath = '/child'
+
 const childs = {
-  state: {
-    list: [
-      {
-        id: 1,
-        name: 'Abbey Christansens',
-        picture: 'https://placeimg.com/40/40/people/1'
-      },
-      {
-        id: 2,
-        name: 'Alex Nelson',
-        picture: ''
-      },
-      {
-        id: 3,
-        name: 'Mary Johnson',
-        picture: 'https://placeimg.com/40/40/people/2'
-      },
-      {
-        id: 4,
-        name: 'Sandra Adams',
-        picture: 'https://placeimg.com/40/40/people/3'
-      }
-    ]
-  },
+  state: [],
   getters: {
-    childsList: state => state.list
+    getChildsList: state => state
   },
   mutations: {
-    clearChilds (state) {
-      state.list = []
-    },
-    setChilds (state, childsList) {
-      state.list = childsList
-    }
+    clearChildsList: (state) => (state.length = 0),
+    setChildsList: (state, childsList) => (state.push(...childsList)),
+    setNewChild: (state, newChild) => (state.push(newChild))
   },
   actions: {
-    getChilds ({ commit }, responsableId) {
-      return new Promise((resolve, reject) => {
-        // eslint-disable-next-line
-        axios.get('api/childs/', responsableId)
-          .then(response => {
-            commit('setChilds', response.data)
-            resolve(response)
-          })
-          .catch(error => {
-            console.error(error)
-            reject(error)
-          })
+    getChildsList ({ _ }) {
+      return axiosDispatch({
+        url: `${childsPath}`,
+        mutation: 'setChildsList'
       })
     },
-    addChild ({ commit }, newChild) {
-      // return new Promise((resolve, reject) => {
-      //   // eslint-disable-next-line
-      //   axios.post('api/childs/', newChild)
-      //     .then(response => {
-      //       resolve(response)
-      //     })
-      //     .catch(error => {
-      //       reject(error)
-      //     })
-      // })
-    },
-    removeChild ({ commit }, childId) {
-      // return new Promise((resolve, reject) => {
-      //   // eslint-disable-next-line
-      //   axios.delete('api/childs/' + childId)
-      //     .then(response => {
-      //       resolve(response)
-      //     })
-      //     .catch(error => {
-      //       reject(error)
-      //     })
-      // })
+
+    addNewChild ({ _ }, newChild) {
+      return axiosDispatch({
+        url: `${childsPath}`,
+        method: 'POST',
+        data: newChild,
+        mutation: 'setNewChild'
+      })
     }
   }
 }

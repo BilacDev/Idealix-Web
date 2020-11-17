@@ -3,12 +3,12 @@
     <SideMenu
       :childsList="childsList"
       class="elevation"
-      @addChildDialogVisable="addChildDialogVisibel = true"
-      @addPointDialogVisable="addPointDialogVisibel = true"
+      @open-add-child-dialog="openAddChildDialog"
+      @open-add-point-dialog="openAddPointDialog"
     />
 
     <main class="main-container__content">
-      <ProfileHeader :responsableInfo="responsableInfo" />
+      <ProfileHeader :responsible-data="responsibleData" />
 
       <transition name="fade">
         <router-view/>
@@ -28,7 +28,6 @@
           <label for="name">Nome</label>
           <md-input
             v-model="newChildForm.name"
-            :disabled="isSending"
             id="name"
             name="name" />
         </md-field>
@@ -37,34 +36,28 @@
           <label for="gender">Genero</label>
           <md-select
             v-model="newChildForm.gender"
-            :disabled="isSending"
             id="gender"
             name="gender">
             <md-option value="m">É um Menino</md-option>
             <md-option value="f">É uma Menina</md-option>
           </md-select>
         </md-field>
-        <md-field>
-          <md-icon>today</md-icon>
-          <label for="gender">Data de nascimento</label>
-          <md-input
-            v-model="newChildForm.birthday"
-            :disabled="isSending"
-            id="birthday"
-            name="birthday" />
-        </md-field>
+        <md-datepicker
+          v-model="newChildForm.birthday"
+          id="birthday"
+          name="birthday">
+          <label>Data de nascimento</label>
+        </md-datepicker>
       </form>
       <md-dialog-actions>
         <md-button
-          :disabled="isSending"
           class="md-primary"
           @click="addChildDialogVisibel = false">
           Cancelar
         </md-button>
         <md-button
-          :disabled="isSending"
           class="md-primary md-raised"
-          @click="addPintDialogVisibel = false">
+          @click="handeAddChild">
           Adicionar
         </md-button>
       </md-dialog-actions>
@@ -82,8 +75,7 @@
           <md-icon>mood</md-icon>
           <label for="gender">Criança</label>
           <md-select
-            :disabled="isSending"
-            v-model="newPointForm.child"
+            v-model="newPointForm.id"
             id="child"
             name="child">
             <md-option
@@ -93,7 +85,6 @@
               <span>
                 <UserAvatar
                 :name="child.name"
-                :picture="child.picture"
                 size="md-small" />
                 {{ child.name }}
               </span>
@@ -105,7 +96,6 @@
           <label for="weight">Peso</label>
           <md-input
             v-model="newPointForm.weight"
-            :disabled="isSending"
             id="weight"
             name="weight" />
           <span class="md-suffix">Kg</span>
@@ -115,32 +105,26 @@
           <label for="height">Altura</label>
           <md-input
             v-model="newPointForm.height"
-            :disabled="isSending"
             id="height"
             name="height" />
           <span class="md-suffix">m</span>
         </md-field>
-        <md-field>
-          <md-icon>today</md-icon>
-          <label for="height">Data da medição</label>
-          <md-input
-            v-model="newPointForm.pointday"
-            :disabled="isSending"
-            id="madkday"
-            name="madkday" />
-        </md-field>
+        <md-datepicker
+          v-model="newPointForm.date"
+          id="date"
+          name="date">
+          <label>Data da medição</label>
+        </md-datepicker>
       </form>
       <md-dialog-actions>
         <md-button
-          :disabled="isSending"
           class="md-primary"
           @click="addPointDialogVisibel = false">
           Cancelar
         </md-button>
         <md-button
-          :disabled="isSending"
           class="md-primary md-raised"
-          @click="addPointDialogVisibel = false">
+          @click="handleAddPoint">
           Adicionar
         </md-button>
       </md-dialog-actions>
@@ -153,13 +137,13 @@
       <md-speed-dial-content>
         <md-button
           class="md-icon-button"
-          @click="addChildDialogVisibel = true">
+          @click="openAddChildDialog">
           <md-icon>face</md-icon>
           <md-tooltip md-direction="left">Adicionar Criança</md-tooltip>
         </md-button>
         <md-button
           class="md-icon-button"
-          @click="addPointDialogVisibel = true">
+          @click="openAddPointDialog">
           <md-icon>timeline</md-icon>
           <md-tooltip md-direction="left">Inserir Marco</md-tooltip>
         </md-button>
@@ -171,6 +155,7 @@
 <script>
 import SideMenu from '@/components/SideMenu'
 import ProfileHeader from '@/components/ProfileHeader'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -178,32 +163,68 @@ export default {
     ProfileHeader,
     SideMenu
   },
+
   data: () => ({
-    isSending: false,
     addChildDialogVisibel: false,
     addPointDialogVisibel: false,
-    newChildForm: {},
-    newPointForm: {}
+    newChildForm: {
+      name: '',
+      gender: '',
+      birthday: ''
+    },
+    newPointForm: {
+      id: '',
+      weight: null,
+      height: null,
+      date: ''
+    }
   }),
   computed: {
-    responsableInfo () {
-      return this.$store.getters.responsableInfo
-    },
-    childsList () {
-      return this.$store.getters.childsList
-    }
+    ...mapGetters({
+      responsibleData: 'getResponsibleData',
+      childsList: 'getChildsList'
+    })
   },
   beforeMount () {
-    this.$store.dispatch('getChilds', this.responsableInfo.id)
-      .then(() => {
-
-      })
-      .catch(error => {
-        console.error(error)
-      })
+    this.getChildsList()
   },
   methods: {
+    ...mapActions([
+      'getChildsList',
+      'addNewChild',
+      'addNewPoint'
+    ]),
 
+    openAddChildDialog () {
+      const { newChildForm } = this
+
+      newChildForm.name = ''
+      newChildForm.gender = ''
+      newChildForm.birthday = ''
+
+      this.addChildDialogVisibel = true
+    },
+
+    handeAddChild () {
+      this.addNewChild(this.newChildForm)
+      this.addChildDialogVisibel = false
+    },
+
+    openAddPointDialog () {
+      const { newPointForm } = this
+
+      newPointForm.id = ''
+      newPointForm.weight = null
+      newPointForm.height = null
+      newPointForm.date = ''
+
+      this.addPointDialogVisibel = true
+    },
+
+    handleAddPoint () {
+      this.addNewPoint(this.newPointForm)
+      this.addPointDialogVisibel = false
+    }
   }
 }
 </script>

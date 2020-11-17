@@ -17,22 +17,18 @@ export default {
   props: {
     name: {
       type: String,
-      required: false,
       default: ''
     },
     picture: {
       type: String,
-      required: false,
       default: ''
     },
     icon: {
       type: String,
-      required: false,
       default: ''
     },
     size: {
       type: String,
-      required: false,
       default: ''
     }
   },
@@ -53,6 +49,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../styles/variables.scss';
+
 .useravatar-component {
   margin-right: 8px;
   margin-left: 0px;

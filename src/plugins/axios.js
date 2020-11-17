@@ -1,13 +1,14 @@
 import Vue from 'vue'
 import axios from 'axios'
-import store from '@/store'
+import Router from 'vue-router'
 
-const AUTH_TOKEN = localStorage.iDealixToken
+const LOGGED_USER = JSON.parse(localStorage.getItem('iDealixLoggedPerson'))
 
-if (AUTH_TOKEN) axios.defaults.headers.common['Authorization'] = AUTH_TOKEN
+if (LOGGED_USER && LOGGED_USER.token) axios.defaults.headers.common['Authorization'] = LOGGED_USER.token
 
-let config = {
-  baseURL: process.env.VUE_APP_BASE_URL || location.origin,
+const config = {
+  // baseURL: process.env.VUE_APP_BASE_URL || location.origin,
+  baseURL: 'http://localhost:4000',
   timeout: 60 * 1000,
   headers: {}
 }
@@ -38,7 +39,7 @@ _axios.interceptors.response.use(
   },
   function (error) {
     if (error.response.status === 401) {
-      store.dispatch('logout')
+      Router.push('/login')
     }
     return Promise.reject(error)
   }

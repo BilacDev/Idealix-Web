@@ -3,11 +3,11 @@
     <h1 class="sidemenu-component__title">iDealix</h1>
     <md-list class="sidemenu-component__menu-items">
       <md-subheader>Opções</md-subheader>
-      <md-list-item @click="$emit('add-child-dialog-visable')">
+      <md-list-item @click="$emit('open-add-child-dialog')">
         <md-icon>face</md-icon>
         <span class="md-list-item-text">Adicionar Criança</span>
       </md-list-item>
-      <md-list-item @click="$emit('add-point-dialog-visable')">
+      <md-list-item @click="$emit('open-add-point-dialog')">
         <md-icon>timeline</md-icon>
         <span class="md-list-item-text">Inserir Marco</span>
       </md-list-item>
@@ -16,10 +16,7 @@
         v-for="child in childsList"
         :key="child.id"
         :to="`/dashboard/${child.id}`">
-        <UserAvatar
-          :name="child.name"
-          :picture="child.picture"
-        />
+        <UserAvatar :name="child.name" />
         <span class="md-list-item-text">{{ child.name }}</span>
       </md-list-item>
     </md-list>
@@ -32,7 +29,6 @@ export default {
   props: {
     childsList: {
       type: Array,
-      required: true,
       default: () => []
     }
   }

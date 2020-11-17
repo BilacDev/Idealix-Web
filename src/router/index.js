@@ -10,8 +10,8 @@ const router = new Router({
       name: 'home',
       path: '/',
       component: () => import(/* webpackChunkName: "home" */ '@/views/home/Home'),
-      meta: { requiresAuth: false },
-      redirect: 'dashboard',
+      meta: { requiresAuth: true },
+      redirect: 'dashboard/exemple',
       children: [
         {
           name: 'dashboard',

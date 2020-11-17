@@ -13,10 +13,15 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'External',
   beforeMount () {
-    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
+    this.clearLoggedPerson()
+  },
+  methods: {
+    ...mapActions(['clearLoggedPerson'])
   }
 }
 </script>

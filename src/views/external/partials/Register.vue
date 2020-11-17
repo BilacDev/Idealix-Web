@@ -2,14 +2,13 @@
   <form
     class="register-view"
     novalidate
-    @submit.prevent="validateUser">
+    @submit.prevent="handleCreateAccount">
     <h1 class="external-view__title">Cadastre-se</h1>
 
     <md-field>
       <label for="first-name">Nome</label>
       <md-input
         v-model="registerForm.name"
-        :disabled="isSending"
         id="name"
         name="name"
         autocomplete="name" />
@@ -19,7 +18,6 @@
       <label for="email">E-mail</label>
       <md-input
         v-model="registerForm.email"
-        :disabled="isSending"
         id="email"
         name="email"
         type="email"
@@ -30,7 +28,6 @@
       <label for="password">Senha</label>
       <md-input
         v-model="registerForm.password"
-        :disabled="isSending"
         id="password"
         name="password"
         type="password" />
@@ -39,15 +36,13 @@
     <div class="external-view__submit">
       <md-checkbox
         v-model="registerForm.accepted"
-        :disabled="isSending"
         class="md-raised md-primary">
         Li e aceito os
         <router-link to="/terms">Termos de Uso</router-link>
       </md-checkbox>
       <md-button
-        :disabled="isSending"
         class="md-raised md-primary"
-        @click="createAccount">
+        @click="handleCreateAccount">
         Cadastrar
       </md-button>
     </div>
@@ -62,6 +57,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   name: 'Register',
   data: () => ({
@@ -70,26 +67,13 @@ export default {
       email: '',
       password: '',
       accepted: false
-    },
-    formRules: {},
-    isSending: false
+    }
   }),
-  beforeMount () {
-    if (this.$store.getters.isLoggedIn) this.$store.dispatch('logout')
-  },
   methods: {
-    createAccount () {
-      this.isSending = true
-      this.$store.dispatch('register', this.registerForm)
-        .then(() => {
+    ...mapActions(['createAccount']),
 
-        })
-        .catch(error => {
-          console.error(error)
-        })
-        .finally(() => {
-          this.isSending = false
-        })
+    handleCreateAccount () {
+      this.createAccount(this.registerForm)
     }
   }
 }

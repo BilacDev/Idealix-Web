@@ -47,27 +47,15 @@
 
 <script>
 import HistoryChart from '@/components/HistoryChart'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'Dashboard',
   components: {
     HistoryChart
   },
-  data: () => ({
-    editChildForm: {
-      name: '',
-      gender: '',
-      age: '',
-      picture: ''
-    }
-  }),
   computed: {
-    childInfo () {
-      return this.$store.getters.childInfo
-    },
-    childHistory () {
-      return this.$store.getters.childHistory
-    },
+    ...mapGetters({ currentChild: 'getCurrentChild' }),
     chartStyles () {
       return {
         flex: 1,
@@ -80,15 +68,9 @@ export default {
       }
     }
   },
-  beforeCreate () {
-    let childId = this.$route.params.id
-    this.$store.dispatch('getChild', childId)
-      .then(() => {
-
-      })
-      .catch(error => {
-        console.error(error)
-      })
+  beforeMount () {
+    const childId = this.$route.params.id
+    this.getCurrentChild(childId)
   },
   created () {
     this.history = {
@@ -110,6 +92,8 @@ export default {
     }
   },
   methods: {
+    ...mapActions([ 'getCurrentChild' ]),
+
     getRandomInt () {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
     }
