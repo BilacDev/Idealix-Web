@@ -5,7 +5,7 @@ const childsPath = '/child'
 const childs = {
   state: [],
   getters: {
-    getChildsList: state => state
+    getChildsList: state => state.sort((a, b) => a.nome > b.nome ? 1 : a.nome < b.nome ? -1 : 0)
   },
   mutations: {
     clearChildsList: (state) => (state.length = 0),

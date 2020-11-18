@@ -6,8 +6,8 @@ const initialState = {
   id: '',
   name: '',
   gender: '',
-  status: '',
   age: null,
+  status: '',
   height: null,
   weight: null,
   historic: []
@@ -31,13 +31,13 @@ const historic = {
   },
   actions: {
     getCurrentChild ({ _ }, childId) {
-      axiosDispatch({
+      return axiosDispatch({
         url: `${historicPath}/${childId}`,
         mutation: 'setCurrentChild'
       })
     },
     addNewPoint ({ _ }, newPoint) {
-      axiosDispatch({
+      return axiosDispatch({
         url: `${historicPath}`,
         method: 'POST',
         data: newPoint,

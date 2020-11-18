@@ -6,8 +6,9 @@
       v-if="picture"
       :src="picture"
       alt="People">
+    <span v-else-if="nameInitials">{{ nameInitials }}</span>
     <md-icon v-else-if="icon">{{ icon }}</md-icon>
-    <span v-else>{{ nameInitials }}</span>
+    <span v-else>-</span>
   </md-avatar>
 </template>
 

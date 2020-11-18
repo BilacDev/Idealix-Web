@@ -75,7 +75,7 @@
           <md-icon>mood</md-icon>
           <label for="gender">Criança</label>
           <md-select
-            v-model="newPointForm.id"
+            v-model="newPointForm.childId"
             id="child"
             name="child">
             <md-option
@@ -110,7 +110,7 @@
           <span class="md-suffix">m</span>
         </md-field>
         <md-datepicker
-          v-model="newPointForm.date"
+          v-model="newPointForm.measurementDate"
           id="date"
           name="date">
           <label>Data da medição</label>
@@ -173,10 +173,10 @@ export default {
       birthday: ''
     },
     newPointForm: {
-      id: '',
+      childId: '',
       weight: null,
       height: null,
-      date: ''
+      measurementDate: ''
     }
   }),
   computed: {
@@ -213,10 +213,10 @@ export default {
     openAddPointDialog () {
       const { newPointForm } = this
 
-      newPointForm.id = ''
+      newPointForm.childId = ''
       newPointForm.weight = null
       newPointForm.height = null
-      newPointForm.date = ''
+      newPointForm.measurementDate = ''
 
       this.addPointDialogVisibel = true
     },

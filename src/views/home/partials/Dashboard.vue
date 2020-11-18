@@ -3,13 +3,14 @@
     <div class="dashboard-view__main-cards">
       <md-card class="dashboard-view__details-card elevation">
         <UserAvatar
-          :name="childInfo.name"
-          :picture="childInfo.picture"
+          :name="currentChild.name"
+          icon="person"
+          :picture="currentChild.picture"
           size="md-large"
           class="dashboard-view__details-icon" />
         <div class="dashboard-view__details-text">
-          <h2>{{ childInfo.name }}</h2>
-          <div>{{ childInfo.age }} Anos - {{ childInfo.gender }}</div>
+          <h2>{{ currentChildMasked.name }}</h2>
+          <div>{{ currentChildMasked.age }} - {{ currentChildMasked.gender }}</div>
         </div>
       </md-card>
 
@@ -20,7 +21,7 @@
           class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Status Atual</h2>
-          <div>{{ childInfo.status }}</div>
+          <div>{{ currentChildMasked.status }}</div>
         </div>
       </md-card>
 
@@ -31,7 +32,7 @@
           class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Último marco</h2>
-          <div>{{ childInfo.height }} - {{ childInfo.weight }}</div>
+          <div>{{ currentChildMasked.height }} - {{ currentChildMasked.weight }}</div>
         </div>
       </md-card>
     </div>
@@ -56,6 +57,27 @@ export default {
   },
   computed: {
     ...mapGetters({ currentChild: 'getCurrentChild' }),
+
+    currentChildMasked () {
+      const {
+        name,
+        age,
+        gender,
+        status,
+        height,
+        weight
+      } = this.currentChild
+
+      return {
+        name: name || '-',
+        age: age < 1 ? `${~~(age * 12)} Meses` : `${~~age} Anos`,
+        gender: gender === 'm' ? 'Menino' : 'Menina',
+        status: status || '-',
+        height: `${height || '0.00'}m`.replace('.', ','),
+        weight: `${weight || '0.00'}Kg`.replace('.', ',')
+      }
+    },
+
     chartStyles () {
       return {
         flex: 1,
@@ -68,6 +90,11 @@ export default {
       }
     }
   },
+  watch: {
+    '$route.params.id' (currentId) {
+      this.getCurrentChild(currentId)
+    }
+  },
   beforeMount () {
     const childId = this.$route.params.id
     this.getCurrentChild(childId)
@@ -78,13 +105,11 @@ export default {
       datasets: [
         {
           label: 'Ideal',
-          // backgroundColor: '#f87979c6',
           backgroundColor: '#9f64eac6',
           data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         },
         {
           label: 'Atual',
-          // backgroundColor: '#487fe2c6',
           backgroundColor: '#d44eb7c6',
           data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
         }
