@@ -38,9 +38,25 @@
     </div>
 
     <md-card class="dashboard-view__chart elevation">
+      <md-empty-state
+        v-if="!childsList.length || routerIdParam === 'home' || !currentChild.historic.length"
+        :md-icon="emptyStateData.icon"
+        :md-label="emptyStateData.label"
+        :md-description="emptyStateData.description"
+        :class="emptyStateData.class"
+        class="dashboard-view__empty-state">
+        <md-button
+          v-if="emptyStateData.showButton"
+          class="md-primary md-raised"
+          @click="emptyStateData.buttonAction === 'updateAddChildDialogVisibel' ? updateAddChildDialogVisibel(true) : updateAddPointDialogVisibel(true)">
+          {{ emptyStateData.buttonText }}
+        </md-button>
+      </md-empty-state>
+
       <HistoryChart
+        v-else
         class="dashboard-view__history-chart"
-        :kid-history="history"
+        :kid-history="currentChild.historic"
         :styles="chartStyles" />
     </md-card>
   </div>
@@ -56,7 +72,10 @@ export default {
     HistoryChart
   },
   computed: {
-    ...mapGetters({ currentChild: 'getCurrentChild' }),
+    ...mapGetters({
+      currentChild: 'getCurrentChild',
+      childsList: 'getChildsList'
+    }),
 
     currentChildMasked () {
       const {
@@ -71,7 +90,7 @@ export default {
       return {
         name: name || '-',
         age: age < 1 ? `${~~(age * 12)} Meses` : `${~~age} Anos`,
-        gender: gender === 'm' ? 'Menino' : 'Menina',
+        gender: gender === 'm' ? 'Menino' : gender === 'f' ? 'Menina' : '-',
         status: status || '-',
         height: `${height || '0.00'}m`.replace('.', ','),
         weight: `${weight || '0.00'}Kg`.replace('.', ',')
@@ -88,16 +107,56 @@ export default {
         maxHeight: '100%',
         maxWidth: '100%'
       }
+    },
+
+    routerIdParam () {
+      return this.$route.params.id
+    },
+
+    emptyStateData () {
+      if (!this.childsList.length) {
+        return {
+          icon: 'person_add',
+          label: 'Adicione uma criança',
+          description: 'Ops, parace que você ainda não adicionou nimguém por aqui. Adiciona uma criança para começar.',
+          buttonText: 'Adicionar criança',
+          buttonAction: 'updateAddChildDialogVisibel',
+          showButton: true
+        }
+      } else if (this.routerIdParam === 'home') {
+        return {
+          icon: 'child_care',
+          label: 'Bem vindo!',
+          description: 'Seleciona uma criança para ver seus dados.',
+          showButton: false,
+          class: 'md-primary'
+        }
+      } else if (!this.history.length && this.childsList.map(c => c.id).includes(this.routerIdParam)) {
+        return {
+          icon: 'outlined_flag',
+          label: 'Adicione o primeiro marco',
+          description: 'Esta criança ainda não possui nenhuma medição. Adicione a o primeiro marco para acompanhar seu crescimento.',
+          buttonText: 'Adicionar primeiro marco',
+          buttonAction: 'updateAddPointDialogVisibel',
+          showButton: true
+        }
+      } else {
+        return {
+          icon: 'cancel_presentation',
+          label: 'Ops!',
+          description: 'Parece que esta criança não está cadastrada ou houve algum erro. Cadastre a criança ou tente novamente mais tarde.',
+          showButton: false
+        }
+      }
     }
   },
   watch: {
-    '$route.params.id' (currentId) {
-      this.getCurrentChild(currentId)
+    'routerIdParam' (currentId) {
+      this.handleGetCurrentChild(currentId)
     }
   },
   beforeMount () {
-    const childId = this.$route.params.id
-    this.getCurrentChild(childId)
+    this.handleGetCurrentChild(this.routerIdParam)
   },
   created () {
     this.history = {
@@ -117,10 +176,22 @@ export default {
     }
   },
   methods: {
-    ...mapActions([ 'getCurrentChild' ]),
+    ...mapActions([
+      'getCurrentChild',
+      'updateAddChildDialogVisibel',
+      'updateAddPointDialogVisibel'
+    ]),
 
     getRandomInt () {
       return Math.floor(Math.random() * (50 - 5 + 1)) + 5
+    },
+
+    handleGetCurrentChild (childId) {
+      this.getCurrentChild(childId)
+        .catch(err => {
+          this.$toast.error('Ops! Houve um erro ao carregar esta criança.')
+          console.log(err)
+        })
     }
   }
 }
@@ -167,6 +238,12 @@ export default {
     padding: 16px;
     margin-top: 20px;
     border-radius: $--border-radius;
+    display: flex;
+    align-items: center;
+
+    .dashboard-view__empty-state {
+      max-width: 600px;
+    }
   }
 }
 </style>

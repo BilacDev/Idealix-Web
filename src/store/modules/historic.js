@@ -31,6 +31,8 @@ const historic = {
   },
   actions: {
     getCurrentChild ({ _ }, childId) {
+      if (childId === 'home') return
+
       return axiosDispatch({
         url: `${historicPath}/${childId}`,
         mutation: 'setCurrentChild'

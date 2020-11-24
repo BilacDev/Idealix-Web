@@ -74,6 +74,15 @@ export default {
 
     handleCreateAccount () {
       this.createAccount(this.registerForm)
+        .then(res => {
+          this.registerForm = { name: '', email: '', password: '', accepted: false }
+          this.$toast.success('Sua conta foi criada')
+          this.$router.push('/login')
+        })
+        .catch(err => {
+          this.$toast.success('Ops! Houve um erro ao criar sua conta')
+          console.log(err)
+        })
     }
   }
 }

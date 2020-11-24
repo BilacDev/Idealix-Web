@@ -11,7 +11,7 @@ const router = new Router({
       path: '/',
       component: () => import(/* webpackChunkName: "home" */ '@/views/home/Home'),
       meta: { requiresAuth: true },
-      redirect: 'dashboard/exemple',
+      redirect: 'dashboard/home',
       children: [
         {
           name: 'dashboard',

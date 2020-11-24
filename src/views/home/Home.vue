@@ -52,7 +52,7 @@
       <md-dialog-actions>
         <md-button
           class="md-primary"
-          @click="addChildDialogVisibel = false">
+          @click="updateAddChildDialogVisibel(false)">
           Cancelar
         </md-button>
         <md-button
@@ -119,7 +119,7 @@
       <md-dialog-actions>
         <md-button
           class="md-primary"
-          @click="addPointDialogVisibel = false">
+          @click="updateAddPointDialogVisibel(false)">
           Cancelar
         </md-button>
         <md-button
@@ -163,10 +163,7 @@ export default {
     ProfileHeader,
     SideMenu
   },
-
   data: () => ({
-    addChildDialogVisibel: false,
-    addPointDialogVisibel: false,
     newChildForm: {
       name: '',
       gender: '',
@@ -182,17 +179,25 @@ export default {
   computed: {
     ...mapGetters({
       responsibleData: 'getResponsibleData',
-      childsList: 'getChildsList'
+      childsList: 'getChildsList',
+      addChildDialogVisibel: 'addChildDialogVisibel',
+      addPointDialogVisibel: 'addPointDialogVisibel'
     })
   },
   beforeMount () {
     this.getChildsList()
+      .catch(err => {
+        this.$toast.error('Ops! Houve uma falha ao carregar a lista de crianças.')
+        console.log(err)
+      })
   },
   methods: {
     ...mapActions([
       'getChildsList',
       'addNewChild',
-      'addNewPoint'
+      'addNewPoint',
+      'updateAddChildDialogVisibel',
+      'updateAddPointDialogVisibel'
     ]),
 
     openAddChildDialog () {
@@ -202,12 +207,20 @@ export default {
       newChildForm.gender = ''
       newChildForm.birthday = ''
 
-      this.addChildDialogVisibel = true
+      this.updateAddChildDialogVisibel(true)
     },
 
     handeAddChild () {
       this.addNewChild(this.newChildForm)
-      this.addChildDialogVisibel = false
+        .then(res => {
+          this.$toast.success('Criança adicionada com sucesso.')
+          this.$router.push(`/dashboard/${res.id}`)
+          this.updateAddChildDialogVisibel(false)
+        })
+        .catch(err => {
+          this.$toast.error('Ops! Houve uma falha ao adicionar esta criança.')
+          console.log(err)
+        })
     },
 
     openAddPointDialog () {
@@ -218,12 +231,20 @@ export default {
       newPointForm.height = null
       newPointForm.measurementDate = ''
 
-      this.addPointDialogVisibel = true
+      this.updateAddPointDialogVisibel(true)
     },
 
     handleAddPoint () {
       this.addNewPoint(this.newPointForm)
-      this.addPointDialogVisibel = false
+        .then(res => {
+          this.$toast.success('Marco adicionado com sucesso.')
+          this.$router.push(`/dashboard/${res.id_child}`)
+          this.updateAddPointDialogVisibel(false)
+        })
+        .catch(err => {
+          this.$toast.error('Ops! Houve uma falha ao adicionar este marco.')
+          console.log(err)
+        })
     }
   }
 }
@@ -246,9 +267,11 @@ export default {
 }
 
 .main-container__dialogs {
-  border-radius: $--border-radius;
-  width: 400px;
-  padding: 8px;
+  .md-dialog-container {
+    border-radius: $--border-radius;
+    width: 400px;
+    padding: 8px;
+  }
 
   .md-dialog-title { padding: 24px 16px 16px; margin: 0; }
   .md-menu.md-select { margin-left: 12px !important; }

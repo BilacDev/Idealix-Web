@@ -8,21 +8,29 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    isLoading: false
+    isLoading: false,
+    addChildDialogVisibel: false,
+    addPointDialogVisibel: false
   },
   getters: {
-    isLoading: state => state.isLoading
+    isLoading: state => state.isLoading,
+    addChildDialogVisibel: state => state.addChildDialogVisibel,
+    addPointDialogVisibel: state => state.addPointDialogVisibel
   },
   mutations: {
-    showLoading: (state) => (state.isLoading = true),
-    hideLoading: (state) => (state.isLoading = false)
+    isoading: (state, visible) => (state.isLoading = visible),
+    updateAddChildDialogVisibel: (state, visible) => (state.addChildDialogVisibel = visible),
+    updateAddPointDialogVisibel: (state, visible) => (state.addPointDialogVisibel = visible)
   },
   actions: {
-    showLoading ({ commit }) {
-      commit('showLoading')
+    isoading ({ commit }, visible) {
+      commit('showLoading', visible)
     },
-    hideLoading ({ commit }) {
-      commit('hideLoading')
+    updateAddChildDialogVisibel ({ commit }, visible) {
+      commit('updateAddChildDialogVisibel', visible)
+    },
+    updateAddPointDialogVisibel ({ commit }, visible) {
+      commit('updateAddPointDialogVisibel', visible)
     }
   },
   modules: {

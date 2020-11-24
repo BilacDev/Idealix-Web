@@ -61,8 +61,13 @@ export default {
 
     doLogin () {
       this.setLoggedPerson(this.loginForm)
-        .then(() => this.$router.push('dashboard'))
-        .catch(error => console.log(error))
+        .then(res => {
+          this.$router.push('dashboard')
+        })
+        .catch(err => {
+          this.$toast.error('Ops! Houve uma falha ao fazer login')
+          console.log(err)
+        })
     }
   }
 }
