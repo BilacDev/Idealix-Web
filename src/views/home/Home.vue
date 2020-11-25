@@ -190,9 +190,16 @@ export default {
         this.$toast.error('Ops! Houve uma falha ao carregar a lista de crianças.')
         console.log(err)
       })
+
+    this.getClassification()
+      .catch(err => {
+        this.$toast.error('Ops! Houve uma falha ao carregar a as classificações.')
+        console.log(err)
+      })
   },
   methods: {
     ...mapActions([
+      'getClassification',
       'getChildsList',
       'addNewChild',
       'addNewPoint',
@@ -226,7 +233,7 @@ export default {
     openAddPointDialog () {
       const { newPointForm } = this
 
-      newPointForm.childId = ''
+      newPointForm.childId = this.$route.params.id || ''
       newPointForm.weight = null
       newPointForm.height = null
       newPointForm.measurementDate = ''

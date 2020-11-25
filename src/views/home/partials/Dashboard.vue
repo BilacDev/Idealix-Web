@@ -118,7 +118,7 @@ export default {
         return {
           icon: 'person_add',
           label: 'Adicione uma criança',
-          description: 'Ops, parace que você ainda não adicionou nimguém por aqui. Adiciona uma criança para começar.',
+          description: 'Ops, parace que você ainda não adicionou nimguém por aqui. Adicione uma criança para começar.',
           buttonText: 'Adicionar criança',
           buttonAction: 'updateAddChildDialogVisibel',
           showButton: true
@@ -131,11 +131,11 @@ export default {
           showButton: false,
           class: 'md-primary'
         }
-      } else if (!this.history.length && this.childsList.map(c => c.id).includes(this.routerIdParam)) {
+      } else if (!this.currentChild.historic.length && this.childsList.map(c => c.id).includes(this.routerIdParam)) {
         return {
           icon: 'outlined_flag',
           label: 'Adicione o primeiro marco',
-          description: 'Esta criança ainda não possui nenhuma medição. Adicione a o primeiro marco para acompanhar seu crescimento.',
+          description: 'Esta criança ainda não possui nenhuma medição. Adicione o primeiro marco para acompanhar seu crescimento.',
           buttonText: 'Adicionar primeiro marco',
           buttonAction: 'updateAddPointDialogVisibel',
           showButton: true
@@ -158,33 +158,12 @@ export default {
   beforeMount () {
     this.handleGetCurrentChild(this.routerIdParam)
   },
-  created () {
-    this.history = {
-      labels: ['1', '2', '3', '4', '5', '6', '7'],
-      datasets: [
-        {
-          label: 'Ideal',
-          backgroundColor: '#9f64eac6',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-        },
-        {
-          label: 'Atual',
-          backgroundColor: '#d44eb7c6',
-          data: [this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt(), this.getRandomInt()]
-        }
-      ]
-    }
-  },
   methods: {
     ...mapActions([
       'getCurrentChild',
       'updateAddChildDialogVisibel',
       'updateAddPointDialogVisibel'
     ]),
-
-    getRandomInt () {
-      return Math.floor(Math.random() * (50 - 5 + 1)) + 5
-    },
 
     handleGetCurrentChild (childId) {
       this.getCurrentChild(childId)

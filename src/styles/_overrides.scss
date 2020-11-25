@@ -11,3 +11,8 @@ a {
 .router-link-active {
   background-color: var(--md-theme-default-divider-on-background, rgba(0, 0, 0, 0.12));
 }
+
+.v-toast.v-toasr__item {
+  &--success {}
+  &--error {}
+}

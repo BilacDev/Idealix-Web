@@ -2,7 +2,7 @@
   <div class="sidemenu-component elevation">
     <h1 class="sidemenu-component__title">iDealix</h1>
     <md-list class="sidemenu-component__menu-items">
-      <md-subheader>Opções</md-subheader>
+      <md-subheader>Ações</md-subheader>
       <md-list-item @click="$emit('open-add-child-dialog')">
         <md-icon>face</md-icon>
         <span class="md-list-item-text">Adicionar Criança</span>

@@ -20,7 +20,7 @@ Vue.component('UserAvatar', UserAvatar)
 
 Vue.config.productionTip = false
 Vue.use(VueMaterial)
-Vue.use(VueToast)
+Vue.use(VueToast, { position: 'top-right' })
 Vue.use(Vuelidate)
 
 new Vue({

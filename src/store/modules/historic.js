@@ -3,30 +3,43 @@ import axiosDispatch from '../axiosDispatch'
 const historicPath = '/historic'
 
 const initialState = {
-  id: '',
-  name: '',
-  gender: '',
-  age: null,
-  status: '',
-  height: null,
-  weight: null,
-  historic: []
+  currentChild: {
+    id: '',
+    name: '',
+    gender: '',
+    age: null,
+    status: '',
+    height: null,
+    weight: null,
+    historic: []
+  },
+  classification: {
+    m: [],
+    f: []
+  }
 }
 
 const historic = {
   state: initialState,
   getters: {
-    getCurrentChild: state => state
+    getCurrentChild: state => state.currentChild,
+    getClassification: state => state.classification
   },
   mutations: {
     clearCurrentChild (state) {
-      Object.assign(state, initialState)
+      Object.assign(state.currentChild, initialState.currentChild)
     },
     setCurrentChild (state, currentChild) {
-      Object.assign(state, currentChild)
+      Object.assign(state.currentChild, currentChild)
     },
     setNewPoint (state, newPoint) {
-      state.historic.push(newPoint)
+      if (state.currentChild.id === newPoint.id_child) {
+        state.currentChild.historic.push(newPoint)
+      }
+    },
+    setClassification (state, classification) {
+      state.classification.m = classification.filter(c => c.gender === 'm')
+      state.classification.f = classification.filter(c => c.gender === 'f')
     }
   },
   actions: {
@@ -44,6 +57,12 @@ const historic = {
         method: 'POST',
         data: newPoint,
         mutation: 'setNewPoint'
+      })
+    },
+    getClassification ({ _ }) {
+      return axiosDispatch({
+        url: `/classification`,
+        mutation: 'setClassification'
       })
     }
   }
