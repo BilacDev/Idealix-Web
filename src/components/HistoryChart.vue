@@ -4,9 +4,17 @@ import { mapGetters } from 'vuex'
 
 export default {
   extends: Line,
-  props: ['childHistory'],
+  props: {
+    currentHistoric: {
+      type: Array,
+      default: () => []
+    }
+  },
   computed: {
-    ...mapGetters({ classification: 'getClassification' }),
+    ...mapGetters({
+      classification: 'getClassification',
+      currentChild: 'getCurrentChild'
+    }),
 
     options () {
       return {
@@ -15,26 +23,48 @@ export default {
       }
     },
 
+    currentHistoricAges () {
+      return this.currentHistoric.map(h => h.age)
+    },
+
+    filteredClassification () {
+      return this.classification[this.currentChild.gender].filter(c =>
+        this.currentHistoric
+          .map(h => h.age > 24 && h.age % 12 ? h.age - (h.age % 12) : h.age)
+          .includes(c.age)
+      )
+    },
+
     historic () {
       return {
-        labels: ['1', '2', '3', '4', '5', '6', '7'],
+        labels: this.currentHistoric.map(h => h.age),
         datasets: [
           {
             label: 'Ideal',
-            backgroundColor: '#9f64eac6',
-            data: this.classification
+            borderColor: '#9f64eac6',
+            data: this.filteredClassification.map(c => c.imc)
           },
           {
             label: 'Atual',
-            backgroundColor: '#d44eb7c6',
-            data: this.childHistory
+            borderColor: '#d44eb7c6',
+            data: this.currentHistoric.map(h => h.imc)
           }
         ]
       }
     }
   },
+  watch: {
+    'currentChild.id' (_current) {
+      this.fetchChart()
+    }
+  },
   mounted () {
-    this.renderChart(this.historic, this.options)
+    this.fetchChart()
+  },
+  methods: {
+    fetchChart () {
+      this.renderChart(this.historic, this.options)
+    }
   }
 }
 </script>

@@ -71,4 +71,23 @@ export default {
 .profileheader-component__dropdown-item {
   &--icon { margin-right: 8px !important; }
 }
+
+@media (max-width: 1080px) {
+  .profileheader-component {
+    height: 20px;
+    margin: 20px 20px;
+
+    .profileheader-component__dropdown-button {
+      padding: 8px 0px 8px 8px;
+      &--text { font-size: 1em; }
+    }
+
+    .profileheader-component__avatar-icon {
+      width: 24px;
+      max-width: 24px;
+      height: 24px;
+      max-height: 24px;
+    }
+  }
+}
 </style>

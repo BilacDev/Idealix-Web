@@ -11,6 +11,7 @@ const initialState = {
     status: '',
     height: null,
     weight: null,
+    imc: null,
     historic: []
   },
   classification: {

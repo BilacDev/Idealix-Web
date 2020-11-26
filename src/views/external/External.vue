@@ -79,4 +79,24 @@ export default {
     }
   }
 }
+
+@media (max-width: 1080px) {
+  .external-view {
+    flex-direction: column;
+
+    .external-view__container-logo {
+      width: 100%;
+      height: 84px;
+    }
+
+    .external-view__container-form {
+      width: 100%;
+      height: calc(100% - 84px);
+
+      .external-view__content {
+        max-width: calc(100% - 32px);
+      }
+    }
+  }
+}
 </style>

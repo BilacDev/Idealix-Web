@@ -32,7 +32,7 @@
           class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
           <h2>Último marco</h2>
-          <div>{{ currentChildMasked.height }} - {{ currentChildMasked.weight }}</div>
+          <div>{{ currentChildMasked.height }} - {{ currentChildMasked.weight }} ({{ currentChildMasked.imc }})</div>
         </div>
       </md-card>
     </div>
@@ -56,7 +56,7 @@
       <HistoryChart
         v-else
         class="dashboard-view__history-chart"
-        :kid-history="currentChild.historic"
+        :current-historic="currentChild.historic"
         :styles="chartStyles" />
     </md-card>
   </div>
@@ -84,16 +84,18 @@ export default {
         gender,
         status,
         height,
-        weight
+        weight,
+        imc
       } = this.currentChild
 
       return {
         name: name || '-',
-        age: age < 1 ? `${~~(age * 12)} Meses` : `${~~age} Anos`,
+        age: age >= 12 ? `${(age / 12)} Anos e ${age % 12} Meses` : `${age} Meses`,
         gender: gender === 'm' ? 'Menino' : gender === 'f' ? 'Menina' : '-',
         status: status || '-',
         height: `${height || '0.00'}m`.replace('.', ','),
-        weight: `${weight || '0.00'}Kg`.replace('.', ',')
+        weight: `${weight || '0.00'}Kg`.replace('.', ','),
+        imc: `IMC: ${imc || '0.00'}`.replace('.', ',')
       }
     },
 
@@ -222,6 +224,20 @@ export default {
 
     .dashboard-view__empty-state {
       max-width: 600px;
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .dashboard-view {
+    .dashboard-view__main-cards {
+      flex-direction: column;
+
+      .dashboard-view__details-card {
+        margin-right: 0;
+        margin-bottom: 20px;
+        &:last-child { margin-bottom: 0; }
+      }
     }
   }
 }

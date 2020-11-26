@@ -285,4 +285,15 @@ export default {
   .md-dialog-actions { padding: 16px; }
   &--form { padding: 0 16px }
 }
+
+.md-speed-dial-target {
+  opacity: .5;
+  &:hover { opacity: 1; }
+}
+
+@media (max-width: 1080px) {
+  .main-container__content {
+    overflow-y: auto;
+  }
+}
 </style>
