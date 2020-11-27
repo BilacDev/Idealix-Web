@@ -23,10 +23,6 @@ export default {
       }
     },
 
-    currentHistoricAges () {
-      return this.currentHistoric.map(h => h.age)
-    },
-
     filteredClassification () {
       return this.classification[this.currentChild.gender].filter(c =>
         this.currentHistoric
@@ -40,13 +36,26 @@ export default {
         labels: this.currentHistoric.map(h => h.age),
         datasets: [
           {
-            label: 'Ideal',
-            borderColor: '#9f64eac6',
-            data: this.filteredClassification.map(c => c.imc)
+            fill: 'end',
+            label: 'Acima do peso',
+            borderColor: '#d44eb798',
+            backgroundColor: '#d44eb798',
+            data: this.filteredClassification
+              .filter(c => c.reference === 'max')
+              .map(c => c.imc)
+          },
+          {
+            fill: 'start',
+            label: 'Abaixo do peso',
+            borderColor: '#9f64ea98',
+            backgroundColor: '#9f64ea98',
+            data: this.filteredClassification
+              .filter(c => c.reference === 'min')
+              .map(c => c.imc)
           },
           {
             label: 'Atual',
-            borderColor: '#d44eb7c6',
+            borderColor: '#621ba298',
             data: this.currentHistoric.map(h => h.imc)
           }
         ]
@@ -55,6 +64,9 @@ export default {
   },
   watch: {
     'currentChild.id' (_current) {
+      this.fetchChart()
+    },
+    'currentChild.historic' (_current) {
       this.fetchChart()
     }
   },
