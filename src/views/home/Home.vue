@@ -296,4 +296,14 @@ export default {
     overflow-y: auto;
   }
 }
+
+// @media (max-width: 880px) {
+//   .main-container {
+//     .main-container__main-menu {
+//       position: absolute;
+//       opacity: 0;
+//       transform: translateX(-100%);
+//     }
+//   }
+// }
 </style>

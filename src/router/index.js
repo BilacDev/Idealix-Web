@@ -36,11 +36,6 @@ const router = new Router({
           name: 'register',
           path: '/register',
           component: () => import(/* webpackChunkName: "register" */ '@/views/external/partials/Register')
-        },
-        {
-          name: 'terms',
-          path: '/terms',
-          component: () => import(/* webpackChunkName: "terms" */ '@/views/external/partials/Terms')
         }
       ]
     },
