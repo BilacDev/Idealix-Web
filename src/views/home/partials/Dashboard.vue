@@ -90,7 +90,7 @@ export default {
 
       return {
         name: name || '-',
-        age: age >= 12 ? `${~~(age / 12)} Ano${~~(age / 12) > 1 ? 's' : ''} e ${age % 12} Mese${(age % 12) > 1 ? 's' : ''}` : `${age || 0} Meses`,
+        age: age >= 12 ? `${~~(age / 12)} Ano${~~(age / 12) > 1 ? 's' : ''} e ${age % 12} Mês${(age % 12) > 1 ? 's' : ''}` : `${age || 0} Meses`,
         gender: gender === 'm' ? 'Menino' : gender === 'f' ? 'Menina' : 'Menino(a)',
         status: status || '-',
         height: `${height || '0.00'}m`.replace('.', ','),
