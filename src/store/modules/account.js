@@ -40,8 +40,7 @@ const account = {
       return axiosDispatch({
         url: `${resposablePath}/register`,
         method: 'POST',
-        data: params,
-        mutation: 'setLoggedPerson'
+        data: params
       })
     },
 

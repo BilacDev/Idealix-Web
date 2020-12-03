@@ -30,6 +30,7 @@ new Vue({
 }).$mount('#app')
 
 Vue.material.locale = {
+  ...Vue.material.locale,
   dateFormat: 'dd/MM/yyyy',
   days: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sabado'],
   shortDays: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
