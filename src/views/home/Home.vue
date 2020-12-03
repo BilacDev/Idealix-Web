@@ -17,6 +17,7 @@
 
     <md-dialog
       :md-active.sync="addChildDialogVisibel"
+      :md-fullscreen="false"
       class="main-container__dialogs">
       <md-dialog-title>Adicionar uma criança</md-dialog-title>
       <form
@@ -65,6 +66,7 @@
 
     <md-dialog
       :md-active.sync="addPointDialogVisibel"
+      :md-fullscreen="false"
       class="main-container__dialogs">
       <md-dialog-title>Adicionar um marco</md-dialog-title>
       <form
@@ -95,7 +97,8 @@
           <md-icon>360</md-icon>
           <label for="weight">Peso</label>
           <md-input
-            v-model="newPointForm.weight"
+            v-model.lazy="newPointForm.weight"
+            v-number="numberMask"
             id="weight"
             name="weight" />
           <span class="md-suffix">Kg</span>
@@ -104,7 +107,8 @@
           <md-icon>height</md-icon>
           <label for="height">Altura</label>
           <md-input
-            v-model="newPointForm.height"
+            v-model.lazy="newPointForm.height"
+            v-number="numberMask"
             id="height"
             name="height" />
           <span class="md-suffix">m</span>
@@ -155,6 +159,7 @@
 <script>
 import SideMenu from '@/components/SideMenu'
 import ProfileHeader from '@/components/ProfileHeader'
+import { VMoney } from 'v-money'
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
@@ -174,8 +179,19 @@ export default {
       weight: null,
       height: null,
       measurementDate: ''
+    },
+    numberMask: {
+      decimal: ',',
+      thousands: '.',
+      prefix: '',
+      suffix: '',
+      precision: 2,
+      masked: false
     }
   }),
+  directives: {
+    number: VMoney
+  },
   computed: {
     ...mapGetters({
       responsibleData: 'getResponsibleData',
@@ -218,7 +234,13 @@ export default {
     },
 
     handeAddChild () {
-      this.addNewChild(this.newChildForm)
+      const { name, gender, birthday } = this.newChildForm
+
+      this.addNewChild({
+        name,
+        gender,
+        birthday: new Date(birthday).getTime()
+      })
         .then(res => {
           this.$toast.success('Criança adicionada com sucesso.')
           this.$router.push(`/dashboard/${res.id}`)
@@ -236,13 +258,20 @@ export default {
       newPointForm.childId = this.$route.params.id || ''
       newPointForm.weight = null
       newPointForm.height = null
-      newPointForm.measurementDate = ''
+      newPointForm.measurementDate = new Date()
 
       this.updateAddPointDialogVisibel(true)
     },
 
     handleAddPoint () {
-      this.addNewPoint(this.newPointForm)
+      const { childId, measurementDate, height, weight } = this.newPointForm
+
+      this.addNewPoint({
+        childId,
+        height: +(height.replace(',', '.')),
+        weight: +(weight.replace(',', '.')),
+        measurementDate: new Date(measurementDate).getTime()
+      })
         .then(res => {
           this.$toast.success('Marco adicionado com sucesso.')
           this.$router.push(`/dashboard/${res.id_child}`)

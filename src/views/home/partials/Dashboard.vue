@@ -31,7 +31,7 @@
           size="md-large"
           class="dashboard-view__details-icon"/>
         <div class="dashboard-view__details-text">
-          <h2>Último marco</h2>
+          <h2>Último marco ({{ currentChildMasked.measurementDate }})</h2>
           <div>{{ currentChildMasked.height }} - {{ currentChildMasked.weight }} ({{ currentChildMasked.imc }})</div>
         </div>
       </md-card>
@@ -85,14 +85,16 @@ export default {
         status,
         height,
         weight,
-        imc
+        imc,
+        measurementDate
       } = this.currentChild
 
       return {
         name: name || '-',
-        age: age >= 12 ? `${~~(age / 12)} Ano${~~(age / 12) > 1 ? 's' : ''} e ${age % 12} Mese${(age % 12) > 1 ? 's' : ''}` : `${age || 0} Meses`,
+        age: age >= 12 ? `${~~(age / 12)} ${~~(age / 12) === 1 ? 'Ano' : 'Anos'} e ${age % 12} ${(age % 12) === 1 ? 'Mês' : 'Meses'}` : `${age || 0} Meses`,
         gender: gender === 'm' ? 'Menino' : gender === 'f' ? 'Menina' : 'Menino(a)',
         status: status || '-',
+        measurementDate: `${('00' + new Date(measurementDate).getDate()).slice(-2)}/${('00' + (new Date(measurementDate).getMonth() + 1)).slice(-2)}/${new Date(measurementDate).getFullYear()}`,
         height: `${height || '0.00'}m`.replace('.', ','),
         weight: `${weight || '0.00'}Kg`.replace('.', ','),
         imc: `IMC: ${imc || '0.00'}`.replace('.', ',')

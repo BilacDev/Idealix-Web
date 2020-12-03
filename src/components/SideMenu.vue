@@ -49,13 +49,13 @@ export default {
 <style lang="scss">
 @import '../styles/variables.scss';
 
-.sidemenu-component__checkbox,
-.sidemenu-component__hamburguer {
-  display: none;
-}
-
 .sidemenu-component {
   display: flex;
+
+  .sidemenu-component__checkbox,
+  .sidemenu-component__hamburguer {
+    display: none;
+  }
 
   .sidemenu-component__container {
     z-index: 10;
@@ -133,6 +133,7 @@ export default {
       z-index: 99;
       border-radius: 12px;
       background: rgb(0, 0, 0, 0.54);
+      box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
       transition: .4s ease-in-out;
 
       &:before, &:after {
@@ -143,7 +144,9 @@ export default {
         height: 100%;
         border-radius: 1.5px;
         background: rgb(0, 0, 0, 0.54);
+        box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
         transition: .4s ease-in-out;
+
       }
       &:before { top: -10px; }
       &:after { bottom: -10px; }

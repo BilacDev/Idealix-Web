@@ -2,15 +2,13 @@ import axiosDispatch from '../axiosDispatch'
 
 const resposablePath = '/responsible'
 
-const initialState = JSON.parse(localStorage.getItem('iDealixLoggedPerson')) || {
-  id: '',
-  name: '',
-  email: '',
-  token: ''
+const getDefaultState = () => {
+  return JSON.parse(localStorage.getItem('iDealixLoggedPerson')) ||
+  { id: '', name: '', email: '', token: '' }
 }
 
 const account = {
-  state: initialState,
+  state: getDefaultState(),
   getters: {
     isLoggedIn: state => !!state.token,
     getResponsibleData: state => state
@@ -21,17 +19,18 @@ const account = {
       delete axios.defaults.headers.common['Authorization']
       localStorage.removeItem('iDealixLoggedPerson')
 
-      Object.assign(state, initialState)
+      Object.assign(state, getDefaultState())
     },
-    setLoggedPerson (state, credentials) {
-      state.id = credentials.id
-      state.name = credentials.name
-      state.email = credentials.email
-      state.token = credentials.token
+    setLoggedPerson (state, { data, payload }) {
+      console.log('ims payload', data, payload)
+      state.id = data.id
+      state.name = data.name
+      state.email = data.email
+      state.token = data.token
 
       // eslint-disable-next-line
       axios.defaults.headers.common['Authorization'] = state.token
-      localStorage.setItem('iDealixLoggedPerson', JSON.stringify(state))
+      if (payload.rememberme) localStorage.setItem('iDealixLoggedPerson', JSON.stringify(state))
     }
   },
   actions: {
@@ -47,12 +46,14 @@ const account = {
     },
 
     setLoggedPerson ({ _ }, params) {
+      const rememberme = params.rememberme
       delete params.rememberme
 
       return axiosDispatch({
         url: `${resposablePath}`,
         method: 'POST',
         data: params,
+        payload: { rememberme },
         mutation: 'setLoggedPerson'
       })
     },
