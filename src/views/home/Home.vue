@@ -172,13 +172,13 @@ export default {
     newChildForm: {
       name: '',
       gender: '',
-      birthday: ''
+      birthday: new Date()
     },
     newPointForm: {
       childId: '',
       weight: null,
       height: null,
-      measurementDate: ''
+      measurementDate: new Date()
     },
     numberMask: {
       decimal: ',',
